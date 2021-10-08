@@ -22,7 +22,7 @@ const App = () => {
           <Route path="/admin/clientlist" component={ClientListScreen} />
           <Route path="/admin/clients/:id/edit" component={ClientEditScreen} />
           <Route path="/admin/clients/:id/info" component={ClientScreen} />
-      <Footer />
+      {/* <Footer /> */}
       </div>
     </Router>
   );

@@ -4,9 +4,13 @@ import { LinkContainer } from "react-router-bootstrap";
 const Auditors = ({ auditors }) => {
   return (
     <div>
-      <Table striped bordered hover responsive className="table-sm">
+      <Table striped bordered hover responsive variant="light" className="table-sm">
         <thead>
           <tr>
+            <th colSpan="3">List of Auditors</th>
+          </tr>
+          <tr>
+            
             <th>Name</th>
             <th>Email</th>
             <th>Joined Date</th>

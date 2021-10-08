@@ -40,7 +40,7 @@ const ClientListScreen = ({ history }) => {
       ) : clients.length === 0 ? (
         <Message variant="danger">No existing client</Message>
       ) : (
-        <Table striped bordered hover responsive className="table-sm">
+        <Table striped bordered hover responsive className="table-sm" variant="light">
           <thead>
             <tr>
               <th>Client ID</th>

@@ -6,7 +6,7 @@ import '../responsive.css'
 const Sidebar = () => {
     return (
         <>
-            <div className="col-xl-4 col-lg-3 col-md-4 sidebar">
+            <div className="col-xl-2 col-lg-3 col-md-4 sidebar">
             <ProSidebar>
   <Menu iconShape="square">
     <MenuItem ><Link to="">Dashboard</Link></MenuItem>
