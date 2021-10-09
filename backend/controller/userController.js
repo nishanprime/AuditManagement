@@ -27,10 +27,8 @@ export const authUser = asyncHandler(async (req, res) => {
 
 export const getAuditors = asyncHandler(async (req, res) => {
   const users = await UserModel.find({});
-  const clients = await Client.find({ isAdmin: true });
-  const auditors = users.filter((user) => user.isAdmin);
 
-  res.json([...auditors, ...clients]);
+  res.json(users);
 });
 
 export const createAuditor = asyncHandler(async (req, res) => {
