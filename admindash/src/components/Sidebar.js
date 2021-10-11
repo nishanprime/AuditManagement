@@ -16,9 +16,9 @@ const Sidebar = ({ history }) => {
       <div>
         <aside className="main-sidebar sidebar-dark-primary elevation-4">
           {/* Brand Logo */}
-          <a href="index3.html" className="brand-link">
+          <a href="/" className="brand-link">
             <img
-              src="dist/img/AdminLTELogo.png"
+              src={userInfo.dp}
               alt="Master Logo"
               className="brand-image img-circle elevation-3"
               style={{ opacity: ".8" }}
@@ -55,7 +55,7 @@ const Sidebar = ({ history }) => {
                 {/* Add icons to the links using the .nav-icon class
          with font-awesome or any other icon font library */}
                 <li className="nav-item has-treeview menu-open">
-                  <Link to="/dashboard" className="nav-link active">
+                  <Link to="/dashboard" className="nav-link">
                     <i className="nav-icon fas fa-tachometer-alt" />
                     <p>Dashboard</p>
                   </Link>
@@ -63,7 +63,7 @@ const Sidebar = ({ history }) => {
                 <li className="nav-item has-treeview">
                   <Link to="/admin/clients" className="nav-link">
                     <i className="nav-icon fas fa-chart-pie" />
-                    <p>Users</p>
+                    <p>Clients</p>
                   </Link>
                 </li>
                 <li className="nav-item has-treeview">

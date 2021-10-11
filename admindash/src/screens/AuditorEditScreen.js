@@ -22,6 +22,7 @@ import {
   getASingleAuditorInfo,
   updateAuditorProfile,
 } from "../actions/userActions";
+import Breadcrumbs from "../components/dashboard/Breadcrumbs";
 
 const AuditorEditScreen = ({ match, history }) => {
   const auditorId = match.params.id;
@@ -115,12 +116,10 @@ const AuditorEditScreen = ({ match, history }) => {
   return (
     <>
       <Header />
-      <Sidebar />
-      <Footer/>
-      <Link to="/dashboard" className="btn btn-light my-3">
-        Go Back
-      </Link>
-      <FormContainer>
+      <Sidebar history={history}/>
+      <div className="content-wrapper">
+        <Breadcrumbs/>
+        <FormContainer>
         <h1>Edit Auditor</h1>
         {loadingUpdate && <Loader />}
         {errorUpdate && <Message variant="danger">{errorUpdate}</Message>}
@@ -213,6 +212,12 @@ const AuditorEditScreen = ({ match, history }) => {
           </Form>
         )}
       </FormContainer>
+      </div>
+      {/* <Link to="/dashboard" className="btn btn-light my-3">
+        Go Back
+      </Link> */}
+      
+      <Footer/>
     </>
   );
 };

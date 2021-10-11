@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route } from "react-router-dom";
 import LoginScreen from "./screens/LoginScreen";
 import AdminPanel from "./screens/AdminPanel";
 import AuditorEditScreen from "./screens/AuditorEditScreen";
+import Sidebar from "./components/Sidebar";
 
 function App() {
   return (
