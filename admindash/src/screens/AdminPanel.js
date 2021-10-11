@@ -76,7 +76,7 @@ const AdminPanel = ({ location, history }) => {
       ) : (
         <div>
           <Header />
-          <Sidebar userInfo={userInfo} />
+          {userInfo && <Sidebar userInfo={userInfo} />}
           {auditors && <Dashboard auditors={auditors} />}
           <Footer />
         </div>

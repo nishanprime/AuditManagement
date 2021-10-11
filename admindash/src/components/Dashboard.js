@@ -2,9 +2,9 @@ import React from "react";
 import Table from "./Table";
 
 const Dashboard = ({ auditors }) => {
-  console.log(auditors);
 
   return auditors.map((a) => {
+
     return (
       <div>
         <div className="content-wrapper">
