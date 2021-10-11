@@ -14,11 +14,7 @@ function App() {
         <Route path="/login" component={LoginScreen} exact />
         <Route path="/dashboard" component={AdminPanel} />
         <Route path="/master/auditor/:id/edit" component={AuditorEditScreen} />
-<<<<<<< HEAD
         <Route path="/admin/clientlist" component={ClientListScreen}/>
-=======
-        <Route path="/admin/clientlist" component={ClientListScreen} exact/>
->>>>>>> 263d2ffbbb52998677d82274fd1759d2dd16468d
         <Route path="/admin/clients/:id/edit" component={ClientEditScreen} />
         <Route path="/admin/clients/:id/info" component={ClientScreen} />
       </Router>
