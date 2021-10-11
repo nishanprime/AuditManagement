@@ -14,7 +14,7 @@ const Header = () => {
   };
   return (
     <header>
-      <Navbar fixed="top" bg="dark" variant="dark" expand="lg" collapseOnSelect >
+      <Navbar fixed="top" bg="dark" variant="dark" expand="lg" collapseOnSelect>
         <Container>
           <LinkContainer to="/">
             <Navbar.Brand>Audit Company</Navbar.Brand>
@@ -23,7 +23,7 @@ const Header = () => {
           <Navbar.Collapse id="basic-navbar-nav">
             <Route />
             <Nav style={{ marginLeft: "auto" }} className="ml-auto">
-            {userInfo && userInfo.isAdmin && (
+              {userInfo && userInfo.isAdmin && (
                 <NavDropdown title="Admin Panel" id="adminmenu">
                   <LinkContainer to="/admin/clientlist">
                     <NavDropdown.Item>Users</NavDropdown.Item>
@@ -47,8 +47,6 @@ const Header = () => {
                   </Nav.Link>
                 </LinkContainer>
               )}
-              
-              
             </Nav>
           </Navbar.Collapse>
         </Container>

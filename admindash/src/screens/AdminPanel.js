@@ -8,6 +8,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState, React } from "react";
 import { Link } from "react-router-dom";
 import { USER_CREATE_RESET } from "../constants/userConstants";
+import Message from "../components/Message";
+import Loader from "../components/Loader";
 
 const AdminPanel = ({ location, history }) => {
   const dispatch = useDispatch();
@@ -67,11 +69,18 @@ const AdminPanel = ({ location, history }) => {
   ]);
   return (
     <div>
-      <Header />
-      <Sidebar />
-      
-      {auditors && <Dashboard auditors={auditors} />}
-      <Footer />
+      {loading ? (
+        <Loader />
+      ) : error ? (
+        <Message variant="danger">error</Message>
+      ) : (
+        <div>
+          <Header />
+          <Sidebar userInfo={userInfo} />
+          {auditors && <Dashboard auditors={auditors} />}
+          <Footer />
+        </div>
+      )}
     </div>
   );
 };
