@@ -221,8 +221,18 @@ const ClinetEditScreen = ({ match, history }) => {
                 onChange={(e) => setEmail(e.target.value)}
               ></Form.Control>
             </Form.Group>
+
+            <Form.Group controlId="password" className="py-3">
+              <Form.Label>Set Client Password</Form.Label>
+              <Form.Control
+                type="password"
+                placeholder="Enter Password (Default Password is: 123456)"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+              ></Form.Control>
+            </Form.Group>
             <Form.Group controlId="address" className="py-3">
-              <Form.Label>Email Client Address</Form.Label>
+              <Form.Label>Client Address</Form.Label>
               <Form.Control
                 type="name"
                 placeholder="Enter Address"

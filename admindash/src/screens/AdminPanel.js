@@ -13,7 +13,6 @@ import Loader from "../components/Loader";
 
 const AdminPanel = ({ location, history }) => {
   const dispatch = useDispatch();
-  const redirect = location.search ? location.search.split("=")[1] : "/login";
   const userLogin = useSelector((state) => state.userLogin);
   const { loading, userInfo, error } = userLogin;
 
@@ -45,7 +44,7 @@ const AdminPanel = ({ location, history }) => {
   useEffect(() => {
     dispatch({ type: USER_CREATE_RESET });
     if (!userInfo || !userInfo.isAdmin) {
-      history.push(redirect);
+      history.push("/login");
     }
     if (createdAuditorSuccess) {
       history.push(`/master/auditors/${createdAuditor._id}/edit`);
@@ -60,12 +59,12 @@ const AdminPanel = ({ location, history }) => {
   }, [
     history,
     userInfo,
-    redirect,
     dispatch,
     successDelete,
     createdAuditor,
     createdAuditorSuccess,
     auditorDelete,
+    clients,
   ]);
   return (
     <div>
