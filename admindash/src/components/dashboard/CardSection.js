@@ -13,7 +13,6 @@ const CardSection = ({
   return (
     <>
       {/* Small boxes (Stat box) */}
-      <div className="row">
         <div className="col-lg-3 col-6">
           {/* small box */}
           <div className={boxProperty}>
@@ -29,7 +28,6 @@ const CardSection = ({
             </Link>
           </div>
         </div>
-      </div>
       {/* /.row */}
     </>
   );
