@@ -1,10 +1,16 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 
-const Sidebar = () => {
+const Sidebar = ({ history }) => {
   const userLogin = useSelector((state) => state.userLogin);
   const { loading, userInfo, error } = userLogin;
+
+  useEffect(() => {
+    if (!userInfo || !userInfo.name) {
+      history.push("/login");
+    }
+  }, [history, userInfo]);
   return (
     userInfo && (
       <div>
