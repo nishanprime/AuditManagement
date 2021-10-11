@@ -24,8 +24,7 @@ const Table = () => {
                   <tbody>
                   <tr>
                     <td>Trident</td>
-                    <td>Internet
-                      Explorer 4.0
+                    <td  className="text-center"><img src="https://pbs.twimg.com/profile_images/758084549821730820/_HYHtD8F.jpg" width="60" height="auto" alt=""/>
                     </td>
                     <td>Win 95+</td>
                     <td> 4</td>
