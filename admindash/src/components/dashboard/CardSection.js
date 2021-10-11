@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const CardSection = ({
   header,
@@ -23,15 +24,25 @@ const CardSection = ({
             <div className="icon">
               <i className={bodyIcon} />
             </div>
-            <a href="#" className="small-box-footer">
+            <Link to={link} className="small-box-footer">
               {footer} <i className={footerIcon} />
-            </a>
+            </Link>
           </div>
         </div>
       </div>
       {/* /.row */}
     </>
   );
+};
+
+CardSection.defaultProps = {
+  header: "Give me header",
+  body:"Give me body",
+  footer: "Footer title",
+  footerIcon: "fas fa-arrow-circle-right",
+  boxProperty: "small-box bg-info",
+  bodyIcon: "ion ion-bag",
+  link: "https://google.com",
 };
 
 export default CardSection;

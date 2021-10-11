@@ -13,6 +13,7 @@ const Dashboard = ({ auditors }) => {
         {/* Main content */}
         <section className="content">
           <div className="container-fluid">
+            
             <CardSection
               header="150"
               boxProperty={"small-box bg-info"}
@@ -21,7 +22,9 @@ const Dashboard = ({ auditors }) => {
               footerIcon="fas fa-arrow-circle-right"
               color=""
               bodyIcon={"ion ion-bag"}
+              link="/clients"
             />
+            
             {/* Main row */}
             <Table auditors={auditors} />
             <div className="row"></div>
