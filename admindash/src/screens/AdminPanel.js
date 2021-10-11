@@ -1,16 +1,16 @@
-import Footer from '../components/Footer'
-import Header from '../components/Header'
-import Sidebar from '../components/Sidebar'
-import Dashboard from '../components/Dashboard'
+import Footer from "../components/Footer";
+import Header from "../components/Header";
+import Sidebar from "../components/Sidebar";
+import Dashboard from "../components/Dashboard";
 import { getAuditorsAction } from "../actions/userActions";
 import { getClientDetailsAction } from "../actions/clientAction";
 import { useDispatch, useSelector } from "react-redux";
-import { useEffect, useState,React } from "react";
+import { useEffect, useState, React } from "react";
 import { Link } from "react-router-dom";
 import { USER_CREATE_RESET } from "../constants/userConstants";
 
-const AdminPanel = ({location, history}) => {
- const dispatch = useDispatch();
+const AdminPanel = ({ location, history }) => {
+  const dispatch = useDispatch();
   const redirect = location.search ? location.search.split("=")[1] : "/login";
   const userLogin = useSelector((state) => state.userLogin);
   const { loading, userInfo, error } = userLogin;
@@ -52,9 +52,8 @@ const AdminPanel = ({location, history}) => {
         dispatch(getAuditorsAction());
       }
     }
-    if(!clients){
-    dispatch(getClientDetailsAction());
-
+    if (!clients) {
+      dispatch(getClientDetailsAction());
     }
   }, [
     history,
@@ -64,16 +63,17 @@ const AdminPanel = ({location, history}) => {
     successDelete,
     createdAuditor,
     createdAuditorSuccess,
-    auditorDelete
+    auditorDelete,
   ]);
-    return (
-        <div>
-            <Header />
-            <Sidebar/>
-            <Dashboard />
-            <Footer/>
-        </div>
-    )
-}
+  return (
+    <div>
+      <Header />
+      <Sidebar />
+      
+      {auditors && <Dashboard auditors={auditors} />}
+      <Footer />
+    </div>
+  );
+};
 
-export default AdminPanel
+export default AdminPanel;
