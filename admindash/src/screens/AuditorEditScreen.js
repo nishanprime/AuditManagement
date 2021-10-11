@@ -111,7 +111,6 @@ const AuditorEditScreen = ({ match, history }) => {
 
   return (
     <>
-      <div>hi</div>
       <Link to="/dashboard" className="btn btn-light my-3">
         Go Back
       </Link>
