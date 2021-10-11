@@ -56,7 +56,7 @@ const Dashboard = ({ auditors }) => {
             />
             </div>
             {/* Main row */}
-            <Table auditors={auditors} />
+           {auditors &&  <Table auditors={auditors} />}
             
             {/* /.row (main row) */}
           </div>

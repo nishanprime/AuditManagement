@@ -76,6 +76,9 @@ export const logout = () => (dispatch) => {
   dispatch({
     type: CLIENT_DETAILS_RESET,
   });
+  dispatch({
+    type: USER_DETAILS_RESET,
+  });
   // dispatch({
   //   type: USER_LIST_RESET,
   // });
