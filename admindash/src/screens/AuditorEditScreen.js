@@ -6,6 +6,9 @@ import Message from "../components/Message";
 import Loader from "../components/Loader";
 import FormContainer from "../components/FormContainer";
 import axios from "axios";
+import Footer from "../components/Footer";
+import Header from "../components/Header";
+import Sidebar from "../components/Sidebar";
 import {
   CLIENT_UPDATE_PROFILE_RESET,
   CLIENT_UPDATE_RESET,
@@ -19,6 +22,7 @@ import {
   getASingleAuditorInfo,
   updateAuditorProfile,
 } from "../actions/userActions";
+import Breadcrumbs from "../components/dashboard/Breadcrumbs";
 
 const AuditorEditScreen = ({ match, history }) => {
   const auditorId = match.params.id;
@@ -111,10 +115,11 @@ const AuditorEditScreen = ({ match, history }) => {
 
   return (
     <>
-      <Link to="/dashboard" className="btn btn-light my-3">
-        Go Back
-      </Link>
-      <FormContainer>
+      <Header />
+      <Sidebar history={history}/>
+      <div className="content-wrapper">
+        <Breadcrumbs/>
+        <FormContainer>
         <h1>Edit Auditor</h1>
         {loadingUpdate && <Loader />}
         {errorUpdate && <Message variant="danger">{errorUpdate}</Message>}
@@ -207,6 +212,12 @@ const AuditorEditScreen = ({ match, history }) => {
           </Form>
         )}
       </FormContainer>
+      </div>
+      {/* <Link to="/dashboard" className="btn btn-light my-3">
+        Go Back
+      </Link> */}
+      
+      <Footer/>
     </>
   );
 };

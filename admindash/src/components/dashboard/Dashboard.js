@@ -28,37 +28,38 @@ const Dashboard = ({ auditors }) => {
               <CardSection
                 header="150"
                 boxProperty={"small-box bg-info"}
-                body="Clients"
+                body="Total Clients"
                 footer="More Info"
                 footerIcon="fas fa-arrow-circle-right"
                 color=""
                 bodyIcon={"ion ion-bag"}
                 link="/clients"
               />
+              
               <CardSection
                 header="150"
                 boxProperty={"small-box bg-info"}
-                body="Clients"
+                body="Auditors"
                 footer="More Info"
                 footerIcon="fas fa-arrow-circle-right"
                 color=""
                 bodyIcon={"ion ion-bag"}
-                link="/clients"
+                link="/auditors"
               />
               <CardSection
                 header="150"
                 boxProperty={"small-box bg-info"}
-                body="Clients"
+                body="Audit Uploads"
                 footer="More Info"
                 footerIcon="fas fa-arrow-circle-right"
                 color=""
                 bodyIcon={"ion ion-bag"}
-                link="/clients"
+                link="/auditfiles"
               />
               <CardSection
                 header="150"
                 boxProperty={"small-box bg-info"}
-                body="Clients"
+                body="Pending Audits"
                 footer="More Info"
                 footerIcon="fas fa-arrow-circle-right"
                 color=""
