@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from "react";
-import { LinkContainer } from "react-router-bootstrap";
 import { Table, Button, Row, Col } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
-
 import Message from "../components/Message";
 import Loader from "../components/Loader";
 import {
@@ -107,7 +105,7 @@ const ClientListScreen = ({ history }) => {
             {clients &&
               clients.map((client) => (
                 <tr key={client._id}>
-                  <LinkContainer
+                  <Link
                     style={{ color: "red" }}
                     to={`/admin/clients/${client._id}/info`}
                   >
@@ -121,7 +119,7 @@ const ClientListScreen = ({ history }) => {
                         {client.clientId}
                       </p>
                     </td>
-                  </LinkContainer>
+                  </Link>
                   <td>{client.name}</td>
                   <td>
                     <a href={`mailto:${client.email}`}>{client.email}</a>
@@ -141,14 +139,14 @@ const ClientListScreen = ({ history }) => {
                     )}
                   </td> */}
                   <td>
-                    <LinkContainer
+                    <Link
                       to={`/admin/clients/${client._id}/edit`}
                       style={{ marginRight: "5px" }}
                     >
                       <Button variant="light" className="btn-sm">
                         <i className="fas fa-edit"></i>
                       </Button>
-                    </LinkContainer>
+                    </Link>
                   </td>
                   <td>
                     <Button
