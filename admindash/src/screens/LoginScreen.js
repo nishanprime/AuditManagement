@@ -35,7 +35,7 @@ const LoginScreen = ({location, history}) => {
                              <div className="login-logo">
     <img src="dist/img/AdminLTELogo.png" alt="Master Logo" className="brand-image img-circle elevation-3" style={{opacity: '.8'}} />
     <div className="pt-3" style={{fontFamily: "Arial"}}>
-        <a href="../../index2.html"><strong><h3>Master User Company</h3></strong></a>
+        <a href="/"><strong><h3>Saurya Auditors</h3></strong></a>
     </div>
   </div>
   <hr/>
