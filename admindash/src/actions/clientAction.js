@@ -136,7 +136,6 @@ export const updateClientProfile = (client) => async (dispatch, getState) => {
       payload: data,
     });
     dispatch(getASingleClientDetails(client._id));
-    localStorage.setItem("userInfo", JSON.stringify(data));
   } catch (error) {
     dispatch({
       type: CLIENT_UPDATE_PROFILE_FAIL,

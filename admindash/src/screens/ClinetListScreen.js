@@ -11,6 +11,7 @@ import {
   getClientDetailsAction,
 } from "../actions/clientAction";
 import { CLIENT_CREATE_RESET } from "../constants/clientConstants";
+import { Link } from "react-router-dom";
 
 const ClientListScreen = ({ history }) => {
   const dispatch = useDispatch();
@@ -60,6 +61,7 @@ const ClientListScreen = ({ history }) => {
   };
   return (
     <div>
+        <Link to="/dashboard">Go Back</Link>
       <Row>
         <Col sm={6} md={6} xl={6}>
           <h1>Client List / Create Client</h1>
@@ -80,7 +82,14 @@ const ClientListScreen = ({ history }) => {
       ) : clients.length === 0 ? (
         <Message variant="danger">No existing client</Message>
       ) : (
-        <Table striped bordered hover responsive className="table-sm" variant="light">
+        <Table
+          striped
+          bordered
+          hover
+          responsive
+          className="table-sm"
+          variant="light"
+        >
           <thead>
             <tr>
               <th>Client ID</th>
@@ -89,7 +98,7 @@ const ClientListScreen = ({ history }) => {
               <th>Address</th>
               <th>Contact Number</th>
               <th>Registration Number</th>
-              <th>Is Admin?</th>
+              {/* <th>Is Admin?</th> */}
               <th>Edit</th>
               <th>Delete</th>
             </tr>
@@ -120,7 +129,7 @@ const ClientListScreen = ({ history }) => {
                   <td>{client.address}</td>
                   <td>{client.phone}</td>
                   <td>{client.registrationNumber}</td>
-
+{/* 
                   <td>
                     {client.isAdmin ? (
                       <i
@@ -130,7 +139,7 @@ const ClientListScreen = ({ history }) => {
                     ) : (
                       <i className="fas fa-times" style={{ color: "red" }}></i>
                     )}
-                  </td>
+                  </td> */}
                   <td>
                     <LinkContainer
                       to={`/admin/clients/${client._id}/edit`}

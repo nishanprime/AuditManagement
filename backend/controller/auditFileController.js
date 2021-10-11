@@ -14,7 +14,7 @@ export const createClient = asyncHandler(async (req, res) => {
       name: "Enter Full Name",
       dp: "https://image.freepik.com/free-vector/businessman-character-avatar-isolated_24877-60111.jpg",
       clientId: uniqueId.generate(new Date().toJSON()),
-      password: "Create Password",
+      password: "12345",
       email: `Enter Client Email-- ${uniqueId.generate(new Date().toJSON())}`,
       address: "Enter Client Address",
       phone: "Enter Client Phone",
