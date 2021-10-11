@@ -44,8 +44,8 @@ const AdminPanel = ({ location, history }) => {
 
   useEffect(() => {
     dispatch({ type: USER_CREATE_RESET });
-    console.log("Printing userinfo")
-    console.log(userInfo)
+    console.log("Printing userinfo");
+    console.log(userInfo);
     if (!userInfo || !userInfo.isAdmin) {
       history.push(redirect);
     }
@@ -66,9 +66,10 @@ const AdminPanel = ({ location, history }) => {
     createdAuditorSuccess,
     auditorDelete,
   ]);
+
   return (
     <div>
-      <Header history={history}/>
+      <Header history={history} />
       <Sidebar history={history} />
       {loading ? (
         <Loader />

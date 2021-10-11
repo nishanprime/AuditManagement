@@ -1,11 +1,16 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { logout } from "../actions/userActions";
-const Header = () => {
+const Header = ({ history }) => {
   const dispatch = useDispatch();
   const logouthandler = () => {
-    if (window.confirm("Want to logout?")) {
-      dispatch(logout());
+    try {
+      if (window.confirm("Want to logout?")) {
+        dispatch(logout());
+      }
+      history.push("/login");
+    } catch (error) {
+      console.log(error);
     }
   };
   return (
