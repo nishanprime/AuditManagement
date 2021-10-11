@@ -15,15 +15,14 @@ import AuditorEditScreen from "./screens/AuditorEditScreen";
 const App = () => {
   return (
     <Router>
-      <Header />
       <Route render={({ history }) => <Sidebar history={history} />} />
       <div className="col-xl-9 col-lg-8 col-md-7 p-4 mainbody">
-          <Route path="/login" component={LoginScreen} />
-          <Route path="/" component={HomeScreen} exact />
-          <Route path="/admin/clientlist" component={ClientListScreen} />
-          <Route path="/admin/clients/:id/edit" component={ClientEditScreen} />
-          <Route path="/admin/clients/:id/info" component={ClientScreen} />
-      {/* <Footer /> */}
+        <Route path="/login" component={LoginScreen} />
+        <Route path="/" component={HomeScreen} exact />
+        <Route path="/admin/clientlist" component={ClientListScreen} />
+        <Route path="/admin/clients/:id/edit" component={ClientEditScreen} />
+        <Route path="/admin/clients/:id/info" component={ClientScreen} />
+        <Footer />
       </div>
     </Router>
   );
