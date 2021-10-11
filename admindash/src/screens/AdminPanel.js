@@ -1,7 +1,7 @@
 import Footer from "../components/Footer";
 import Header from "../components/Header";
 import Sidebar from "../components/Sidebar";
-import Dashboard from "../components/Dashboard";
+import Dashboard from "../components/dashboard/Dashboard";
 import { getAuditorsAction } from "../actions/userActions";
 import { getClientDetailsAction } from "../actions/clientAction";
 import { useDispatch, useSelector } from "react-redux";
