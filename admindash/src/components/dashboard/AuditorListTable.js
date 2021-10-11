@@ -20,7 +20,7 @@ const Table = ({ auditors }) => {
           <h3 className="card-title">DataTable with default features</h3>
         </div>
         {/* <!-- /.card-header --> */}
-        <div className="card-body">
+        <div className="card-body" style={{"overflow-x":"auto"}}>
           <table id="example1" className="table table-bordered table-striped">
             <thead>
               <tr>
