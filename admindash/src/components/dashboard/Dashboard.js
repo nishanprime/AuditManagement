@@ -1,5 +1,5 @@
 import React from "react";
-import Table from "../Table";
+import Table from "./AuditorListTable";
 import Breadcrumbs from "./Breadcrumbs";
 import CardSection from "./CardSection";
 
