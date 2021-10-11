@@ -9,11 +9,19 @@ const Dashboard = ({ auditors }) => {
   return (
     <div>
       <div className="content-wrapper">
-        <Breadcrumbs/>
+        <Breadcrumbs />
         {/* Main content */}
         <section className="content">
           <div className="container-fluid">
-            <CardSection />
+            <CardSection
+              header="150"
+              boxProperty={"small-box bg-info"}
+              body="Clients"
+              footer="More Info"
+              footerIcon="fas fa-arrow-circle-right"
+              color=""
+              bodyIcon={"ion ion-bag"}
+            />
             {/* Main row */}
             <Table auditors={auditors} />
             <div className="row"></div>
