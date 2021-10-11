@@ -14,7 +14,7 @@ function App() {
         <Route path="/login" component={LoginScreen} exact />
         <Route path="/dashboard" component={AdminPanel} />
         <Route path="/master/auditor/:id/edit" component={AuditorEditScreen} />
-        <Route path="/admin/clientlist" component={ClientListScreen} />
+        <Route path="/admin/clientlist" component={ClientListScreen}/>
         <Route path="/admin/clients/:id/edit" component={ClientEditScreen} />
         <Route path="/admin/clients/:id/info" component={ClientScreen} />
       </Router>

@@ -20,7 +20,7 @@ const Dashboard = ({ auditors }) => {
   return (
     <div>
       <div className="content-wrapper">
-        <Breadcrumbs />
+        <Breadcrumbs page="Dashboard"/>
         {/* Main content */}
         <section className="content">
           <div className="container-fluid">
