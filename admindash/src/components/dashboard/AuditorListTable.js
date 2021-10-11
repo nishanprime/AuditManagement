@@ -2,10 +2,9 @@ import React from 'react'
 
 const Table = () => {
     return (
-        <>
-           
-{/* {/* <!-- Main content --> */}
-    <div className="card">
+        <>       
+            {/* {/* <!-- Main content --> */}
+            <div className="card">
               <div className="card-header">
                 <h3 className="card-title">DataTable with default features</h3>
                 </div>
