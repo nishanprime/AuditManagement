@@ -77,7 +77,7 @@ const AuditorEditScreen = ({ match, history }) => {
       dispatch({ type: USER_UPDATE_PROFILE_RESET });
       history.push("/dashboard");
     } else {
-      if (!auditor.name || auditor._id !== auditorId) {
+      if (!auditor || !auditor.name || auditor._id !== auditorId) {
         dispatch(getASingleAuditorInfo(auditorId));
       } else {
         setName(auditor.name);
