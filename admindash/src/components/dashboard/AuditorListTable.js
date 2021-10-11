@@ -40,7 +40,7 @@ const Table = ({ auditors }) => {
                 return (
                   <tr>
                     <td>{audi._id}</td>
-                    <td>{audi.dp}</td>
+                    <td><img width="40px" height="auto"  src={audi.dp}/></td>
                     <td>{audi.name}</td>
                     <td>{audi.email}</td>
                     <td>{audi.createdAt.substring(0, 10)}</td>
@@ -82,11 +82,10 @@ const Table = ({ auditors }) => {
                         ) : null}
                         {userInfo._id ===
                         audi._id ? null : userInfo.isMaster ? (
-                          <i
-                            onClick={() => deleteHandler(audi._id)}
+                          <Link to="#" onClick={() => deleteHandler(audi._id)}><i
                             style={{ color: "red" }}
                             className="fas fa-trash"
-                          ></i>
+                          ></i></Link>
                         ) : null}
                       </div>
                     </td>
