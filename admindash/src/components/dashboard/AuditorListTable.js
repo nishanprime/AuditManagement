@@ -40,7 +40,7 @@ const Table = ({ auditors }) => {
                 return (
                   <tr>
                     <td>{audi._id}</td>
-                    <td><img width="40px" height="auto"  src={audi.dp}/></td>
+                    <td className="text-center"><img width="40px" height="auto"  src={audi.dp}/></td>
                     <td>{audi.name}</td>
                     <td>{audi.email}</td>
                     <td>{audi.createdAt.substring(0, 10)}</td>
