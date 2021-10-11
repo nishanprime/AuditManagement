@@ -25,6 +25,7 @@ const ClinetEditScreen = ({ match, history }) => {
   const [registrationNumber, setRegistrationNumber] = useState("");
   const [images, setImages] = useState([]);
   const [dp, setDp] = useState("");
+  // const [isAdmin, setIsAdmin] = useState(false);
   const [uploading, setUploading] = useState(false);
   const [dpUploading, setDpUploading] = useState(false);
   const [fileUploadError, setFileUploadError] = useState("");
@@ -62,6 +63,7 @@ const ClinetEditScreen = ({ match, history }) => {
         registrationNumber,
         images: images,
         dp,
+        // isAdmin: isAdmin,
       })
     );
   };
@@ -80,6 +82,7 @@ const ClinetEditScreen = ({ match, history }) => {
         setRegistrationNumber(client.registrationNumber);
         setImages(client.images);
         setDp(client.dp);
+        // setIsAdmin(client.isAdmin);
       }
     }
   }, [client, dispatch, clientId, successUpdate, history]);
@@ -174,8 +177,8 @@ const ClinetEditScreen = ({ match, history }) => {
               <Message variant="warning">
                 Valid file types are: jpeg, jpg, png
               </Message>
-              {fileUploadError && (
-                <Message variant="danger">{fileUploadError}</Message>
+              {dpUploadError && (
+                <Message variant="danger">{dpUploadError}</Message>
               )}
               <Row>
                 <Col xl={9}>
@@ -198,7 +201,7 @@ const ClinetEditScreen = ({ match, history }) => {
                 </Col>
               </Row>
 
-              {uploading && <Loader />}
+              {dpUploading && <Loader />}
             </Form.Group>
             <Form.Group controlId="name" className="py-3">
               <Form.Label>Name</Form.Label>
@@ -245,7 +248,16 @@ const ClinetEditScreen = ({ match, history }) => {
                 onChange={(e) => setRegistrationNumber(e.target.value)}
               ></Form.Control>
             </Form.Group>
-
+            {/* <Form.Group controlId="isAdmin" className="py-3">
+              <Form.Check
+                type="checkbox"
+                label="Is Admin"
+                checked={isAdmin}
+                onChange={(e) => {
+                  setIsAdmin(e.target.checked);
+                }}
+              ></Form.Check>
+            </Form.Group> */}
             <Form.Group controlId="images" className="py-3">
               <Message variant="warning">
                 Valid file types are: jpeg, jpg, png, pdf, docx, xlsx, csv, txt

@@ -10,6 +10,7 @@ import { getAuditorsAction } from "../actions/userActions";
 import Auditors from "../components/Auditors";
 import Spacer from "../components/Spacer";
 import Sidebar from "../components/Sidebar";
+import { USER_CREATE_RESET } from "../constants/userConstants";
 
 const HomeScreen = ({ location, history }) => {
   const dispatch = useDispatch();
@@ -20,6 +21,13 @@ const HomeScreen = ({ location, history }) => {
   const clientDetails = useSelector((state) => state.clientDetails);
   const { loading: clientLoading, clients, error: clientError } = clientDetails;
 
+  const auditorDelete = useSelector((state) => state.auditorDelete);
+  const {
+    loading: deleteLoading,
+    success: successDelete,
+    error: deleteError,
+  } = auditorDelete;
+
   const auditorsDetails = useSelector((state) => state.auditorsDetails);
   const {
     loading: auditorLoading,
@@ -27,31 +35,78 @@ const HomeScreen = ({ location, history }) => {
     error: auditorError,
   } = auditorsDetails;
 
+  const auditorCreate = useSelector((state) => state.auditorCreate);
+  const {
+    loading: createdAuditorLoading,
+    success: createdAuditorSuccess,
+    error: createdAuditorError,
+    createdAuditor,
+  } = auditorCreate;
+
   useEffect(() => {
-    if (!userInfo) {
+    dispatch({ type: USER_CREATE_RESET });
+    if (!userInfo || !userInfo.isAdmin) {
       history.push(redirect);
     }
-    if (userInfo && userInfo.isAdmin) {
-      dispatch(getAuditorsAction());
+    if (createdAuditorSuccess) {
+      history.push(`/master/auditors/${createdAuditor._id}/edit`);
+    } else {
+      if (userInfo && userInfo.isAdmin) {
+        dispatch(getAuditorsAction());
+      }
     }
+    if(!clients){
     dispatch(getClientDetailsAction());
-  }, [history, userInfo, redirect, dispatch]);
+
+    }
+  }, [
+    history,
+    userInfo,
+    redirect,
+    dispatch,
+    successDelete,
+    createdAuditor,
+    createdAuditorSuccess,
+  ]);
   return (
-    
     <>
-      
-      <Row >
-        <DashCard title="No. of Clients" value={1000} icon={"fas fa-user"} color={"grey"}/>
-        <DashCard title="No. of .......... " value={100} icon={"fas fa-briefcase"} color={"purple"} />
-        <DashCard title="Total Audits" value={100} icon={"fas fa-file"} color={"blue"}/>
-        <DashCard title="No. of .......... " value={100} icon={"fas fa-briefcase"} color={"orange"} />
+      <Row>
+        <DashCard
+          title="No. of Clients"
+          value={1000}
+          icon={"fas fa-user"}
+          color={"grey"}
+        />
+        <DashCard
+          title="No. of .......... "
+          value={100}
+          icon={"fas fa-briefcase"}
+          color={"purple"}
+        />
+        <DashCard
+          title="Total Audits"
+          value={100}
+          icon={"fas fa-file"}
+          color={"blue"}
+        />
+        <DashCard
+          title="No. of .......... "
+          value={100}
+          icon={"fas fa-briefcase"}
+          color={"orange"}
+        />
       </Row>
       <Row style={{ marginTop: "20px" }}>
-        <Col sm={12} md={6} xl={3}>
-          
-        </Col>
+        <Col sm={12} md={6} xl={3}></Col>
         <Col sm={12} md={12} xl={9}>
-          <Auditors auditors={auditors} />
+          <h1>Auditor Details</h1>
+          {auditorLoading ? (
+            <Loader />
+          ) : auditorError ? (
+            <Message variant="danger">{auditorError}</Message>
+          ) : (
+            <Auditors auditors={auditors} userLogin={userLogin} />
+          )}
         </Col>
       </Row>
     </>

@@ -1,6 +1,8 @@
 import asyncHandler from "express-async-handler";
+import Client from "../models/ClientModel.js";
 import UserModel from "../models/userModel.js";
 import { generateToken } from "../utils/generateToken.js";
+import uniqueId from "nodejs-unique-numeric-id-generator";
 
 export const authUser = asyncHandler(async (req, res) => {
   const { email, password } = req.body;
@@ -13,6 +15,9 @@ export const authUser = asyncHandler(async (req, res) => {
       email: user.email,
       isAdmin: user.isAdmin,
       token: generateToken(user._id),
+      isMaster: user.isMaster,
+      parent: user.parentAuditor,
+      dp: user.dp,
     });
   } else {
     res.status(401);
@@ -22,6 +27,80 @@ export const authUser = asyncHandler(async (req, res) => {
 
 export const getAuditors = asyncHandler(async (req, res) => {
   const users = await UserModel.find({});
-  const auditors = users.filter((user) => user.isAdmin);
-  res.json(auditors);
+
+  res.json(users);
+});
+
+export const createAuditor = asyncHandler(async (req, res) => {
+  const User = await UserModel.findById(req.user._id);
+  if (User) {
+    const auditor = new UserModel({
+      parentAuditor: User._id,
+      name: "Enter Full Name",
+      dp: "https://image.freepik.com/free-vector/businessman-character-avatar-isolated_24877-60111.jpg",
+      password: "Create Password",
+      email: `Enter Auditor Email-- ${uniqueId.generate(new Date().toJSON())}`,
+    });
+
+    const createdAuditor = await auditor.save();
+    res.status(201).json({
+      _id: createdAuditor._id,
+      parentAuditor: User._id,
+      name: "Enter Full Name",
+      dp: "https://image.freepik.com/free-vector/businessman-character-avatar-isolated_24877-60111.jpg",
+      password: "Create Password",
+      email: `Enter Auditor Email-- ${uniqueId.generate(new Date().toJSON())}`,
+    });
+  } else {
+    res.status(404);
+    throw new Error("No user found");
+  }
+});
+
+export const updateAuditor = asyncHandler(async (req, res) => {
+  const { name, password, email, dp, isMaster } = req.body;
+  const auditor = await UserModel.findById(req.params.id).select("+password");
+  if (auditor) {
+    auditor.name = name || auditor.name;
+    auditor.dp = dp || auditor.dp;
+    auditor.password = password || auditor.password;
+    auditor.email = email || auditor.email;
+    auditor.isMaster = isMaster;
+    const updatedAuditor = await auditor.save();
+    if (updatedAuditor) {
+      const fetchingUpdatedAuditors = await UserModel.findById(
+        updatedAuditor._id
+      );
+      res.json(fetchingUpdatedAuditors);
+    } else {
+      res.status(404);
+      throw new Error("Auditor not found: Some error occurred");
+    }
+  } else {
+    res.status(404);
+    throw new Error("Auditor not found");
+  }
+});
+
+export const auditorDelete = asyncHandler(async (req, res) => {
+  const auditor = await UserModel.findById(req.params.id);
+
+  if (auditor) {
+    await auditor.remove();
+    const auditors = await UserModel.find({});
+    res.json(auditors);
+  } else {
+    res.status(404);
+    throw new Error("Auditor not found");
+  }
+});
+
+export const getAuditorDetails = asyncHandler(async (req, res) => {
+  const auditor = await UserModel.findById(req.params.id);
+  if (auditor) {
+    res.json(auditor);
+  } else {
+    res.status(404);
+    throw new Error("Auditor not found");
+  }
 });

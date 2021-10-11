@@ -10,12 +10,13 @@ import ClientEditScreen from "./screens/ClientEditScreen";
 import ClientScreen from "./screens/ClientScreen";
 import Sidebar from "./components/Sidebar";
 import "./responsive.css";
+import AuditorEditScreen from "./screens/AuditorEditScreen";
 
 const App = () => {
   return (
     <Router>
       <Header />
-          <Sidebar />
+      <Route render={({ history }) => <Sidebar history={history} />} />
       <div className="col-xl-9 col-lg-8 col-md-7 p-4 mainbody">
           <Route path="/login" component={LoginScreen} />
           <Route path="/" component={HomeScreen} exact />
