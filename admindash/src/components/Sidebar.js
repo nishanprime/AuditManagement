@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-const Sidebar = ({history}) => {
+const Sidebar = ({ history }) => {
   const userLogin = useSelector((state) => state.userLogin);
   const { loading, userInfo, error } = userLogin;
 

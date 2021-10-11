@@ -106,17 +106,19 @@ const Header = () => {
           </li> */}
           <div class="column">
             <li className="nav-item">
-            
-            <a
-              className="nav-link"
-              data-widget="control-sidebar"
-              data-slide="true"
-              href="#"
-              role="button"
-            ><div className="float-left mr-2" onClick={logouthandler}>Logout</div>
-              <i className="fas fa-sign-out-alt" onClick={logouthandler}></i>
-            </a>
-          </li>
+              <a
+                className="nav-link"
+                data-widget="control-sidebar"
+                data-slide="true"
+                href="#"
+                role="button"
+              >
+                <div className="float-left mr-2" onClick={logouthandler}>
+                  Logout
+                </div>
+                <i className="fas fa-sign-out-alt"></i>
+              </a>
+            </li>
           </div>
         </ul>
       </nav>

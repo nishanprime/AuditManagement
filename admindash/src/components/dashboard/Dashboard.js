@@ -5,8 +5,6 @@ import Breadcrumbs from "./Breadcrumbs";
 import CardSection from "./CardSection";
 
 const Dashboard = ({ auditors }) => {
-  console.log(auditors);
-
   const auditorDelete = useSelector((state) => state.auditorDelete);
 
   const {

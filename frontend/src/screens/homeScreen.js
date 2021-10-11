@@ -46,6 +46,7 @@ const HomeScreen = ({ location, history }) => {
   useEffect(() => {
     dispatch({ type: USER_CREATE_RESET });
     if (!userInfo || !userInfo.isAdmin) {
+      console.log("Done")
       history.push(redirect);
     }
     if (createdAuditorSuccess) {
@@ -62,6 +63,8 @@ const HomeScreen = ({ location, history }) => {
   }, [
     history,
     userInfo,
+    userInfo.isAdmin,
+    clients,
     redirect,
     dispatch,
     successDelete,
