@@ -3,7 +3,7 @@ import "../loader.css";
 const Loader = () => {
   return (
     <>
-      <div class="lds-ellipsis">
+      <div className="lds-ellipsis">
         <div>
         </div>
         <div>

@@ -30,7 +30,7 @@ const Dashboard = ({ auditors }) => {
                 footer="More Info"
                 footerIcon="fas fa-arrow-circle-right"
                 color=""
-                bodyIcon={"ion ion-bag"}
+                bodyIcon={"ion ion-ios-people"}
                 link="/clients"
               />
               
@@ -41,7 +41,7 @@ const Dashboard = ({ auditors }) => {
                 footer="More Info"
                 footerIcon="fas fa-arrow-circle-right"
                 color=""
-                bodyIcon={"ion ion-bag"}
+                bodyIcon={"ion ion-person"}
                 link="/auditors"
               />
               <CardSection
@@ -51,7 +51,7 @@ const Dashboard = ({ auditors }) => {
                 footer="More Info"
                 footerIcon="fas fa-arrow-circle-right"
                 color=""
-                bodyIcon={"ion ion-bag"}
+                bodyIcon={"ion ion-android-clipboard"}
                 link="/auditfiles"
               />
               <CardSection
@@ -61,7 +61,7 @@ const Dashboard = ({ auditors }) => {
                 footer="More Info"
                 footerIcon="fas fa-arrow-circle-right"
                 color=""
-                bodyIcon={"ion ion-bag"}
+                bodyIcon={"ion ion-android-document"}
                 link="/clients"
               />
             </div>
