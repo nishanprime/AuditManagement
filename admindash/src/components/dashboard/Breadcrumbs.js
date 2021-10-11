@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Breadcrumbs = () => {
+const Breadcrumbs = ({page}) => {
     return (
         <>
             {/* Content Header (Page header) */}
@@ -8,7 +8,7 @@ const Breadcrumbs = () => {
             <div className="container-fluid">
               <div className="row mb-2">
                 <div className="col-sm-6">
-                  <h1 className="m-0 text-dark">Dashboard</h1>
+                  <h1 className="m-0 text-dark">{page}</h1>
                 </div>
                 {/* /.col */}
                 <div className="col-sm-6">
@@ -16,7 +16,7 @@ const Breadcrumbs = () => {
                     <li className="breadcrumb-item">
                       <a href="/">Home</a>
                     </li>
-                    <li className="breadcrumb-item active">Dashboard</li>
+                    <li className="breadcrumb-item active">{page}</li>
                   </ol>
                 </div>
                 {/* /.col */}

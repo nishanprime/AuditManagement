@@ -1,19 +1,19 @@
 import React from "react";
-import { Spinner } from "react-bootstrap";
+import "../loader.css";
 const Loader = () => {
   return (
-    <Spinner
-      animation="border"
-      role="status"
-      style={{
-        width: "100px",
-        height: "100px",
-        margin: "auto",
-        display: "block",
-      }}
-    >
-      <span class="sr-only"></span>
-    </Spinner>
+    <>
+      <div class="lds-ellipsis">
+        <div>
+        </div>
+        <div>
+        </div>
+        <div>
+        </div>
+        <div>
+        </div>
+      </div>
+    </>
   );
 };
 
