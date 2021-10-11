@@ -38,7 +38,7 @@ const Dashboard = ({ auditors }) => {
               
               <CardSection
                 header="150"
-                boxProperty={"small-box bg-info"}
+                boxProperty={"small-box bg-success"}
                 body="Auditors"
                 footer="More Info"
                 footerIcon="fas fa-arrow-circle-right"
@@ -48,7 +48,7 @@ const Dashboard = ({ auditors }) => {
               />
               <CardSection
                 header="150"
-                boxProperty={"small-box bg-info"}
+                boxProperty={"small-box bg-warning"}
                 body="Audit Uploads"
                 footer="More Info"
                 footerIcon="fas fa-arrow-circle-right"
@@ -57,8 +57,8 @@ const Dashboard = ({ auditors }) => {
                 link="/auditfiles"
               />
               <CardSection
-                header="150"
-                boxProperty={"small-box bg-info"}
+                header="_"
+                boxProperty={"small-box bg-danger"}
                 body="Pending Audits"
                 footer="More Info"
                 footerIcon="fas fa-arrow-circle-right"

@@ -118,9 +118,8 @@ const AuditorEditScreen = ({ match, history }) => {
       <Header />
       <Sidebar history={history}/>
       <div className="content-wrapper">
-        <Breadcrumbs/>
-        <FormContainer>
-        <h1>Edit Auditor</h1>
+        <Breadcrumbs page="Edit Auditor Details" />
+        <>
         {loadingUpdate && <Loader />}
         {errorUpdate && <Message variant="danger">{errorUpdate}</Message>}
         {loading ? (
@@ -211,7 +210,7 @@ const AuditorEditScreen = ({ match, history }) => {
             </Button>
           </Form>
         )}
-      </FormContainer>
+      </>
       </div>
       {/* <Link to="/dashboard" className="btn btn-light my-3">
         Go Back

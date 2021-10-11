@@ -113,7 +113,7 @@ const Header = () => {
               data-slide="true"
               href="#"
               role="button"
-            ><div className="float-left mr-2">Logout</div>
+            ><div className="float-left mr-2" onClick={logouthandler}>Logout</div>
               <i className="fas fa-sign-out-alt" onClick={logouthandler}></i>
             </a>
           </li>
