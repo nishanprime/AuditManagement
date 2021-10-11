@@ -1,9 +1,14 @@
 import React, { useEffect } from "react";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import $ from 'jquery';
 const Sidebar = ({history}) => {
   const userLogin = useSelector((state) => state.userLogin);
   const { loading, userInfo, error } = userLogin;
+
+//   $(document).ready(funtion() {
+//     $('body').Layout();
+// })
 
   useEffect(() => {
     if (!userInfo || !userInfo.name) {
@@ -12,7 +17,7 @@ const Sidebar = ({history}) => {
   }, [history, userInfo]);
   return (
     userInfo && (
-      <div>
+      <>
         <aside className="main-sidebar sidebar-dark-primary elevation-4">
           {/* Brand Logo */}
           <a href="index3.html" className="brand-link">
@@ -83,7 +88,7 @@ const Sidebar = ({history}) => {
           </div>
           {/* /.sidebar */}
         </aside>
-      </div>
+      </>
     )
   );
 };

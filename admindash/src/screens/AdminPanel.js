@@ -74,7 +74,6 @@ const AdminPanel = ({ location, history }) => {
         <Message variant="danger">error</Message>
       ) : (
         <div>
-          <Header />
           {/* {<Sidebar history={history}/>} */}
           {auditors && <Dashboard auditors={auditors} />}
         </div>
