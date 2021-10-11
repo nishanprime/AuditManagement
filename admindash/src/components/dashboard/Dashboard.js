@@ -1,10 +1,21 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { useSelector } from "react-redux";
 import Table from "./AuditorListTable";
 import Breadcrumbs from "./Breadcrumbs";
 import CardSection from "./CardSection";
 
 const Dashboard = ({ auditors }) => {
   console.log(auditors);
+
+  const auditorDelete = useSelector((state) => state.auditorDelete);
+
+  const {
+    loading: auditorDeleteLoading,
+    error: auditorDeleteError,
+    success: auditorDeleteSuccess,
+  } = auditorDelete;
+
+  useEffect(() => {}, [auditorDeleteSuccess]);
 
   return (
     <div>
@@ -14,50 +25,50 @@ const Dashboard = ({ auditors }) => {
         <section className="content">
           <div className="container-fluid">
             <div className="row">
-            <CardSection
-              header="150"
-              boxProperty={"small-box bg-info"}
-              body="Clients"
-              footer="More Info"
-              footerIcon="fas fa-arrow-circle-right"
-              color=""
-              bodyIcon={"ion ion-bag"}
-              link="/clients"
+              <CardSection
+                header="150"
+                boxProperty={"small-box bg-info"}
+                body="Clients"
+                footer="More Info"
+                footerIcon="fas fa-arrow-circle-right"
+                color=""
+                bodyIcon={"ion ion-bag"}
+                link="/clients"
               />
               <CardSection
-              header="150"
-              boxProperty={"small-box bg-info"}
-              body="Clients"
-              footer="More Info"
-              footerIcon="fas fa-arrow-circle-right"
-              color=""
-              bodyIcon={"ion ion-bag"}
-              link="/clients"
+                header="150"
+                boxProperty={"small-box bg-info"}
+                body="Clients"
+                footer="More Info"
+                footerIcon="fas fa-arrow-circle-right"
+                color=""
+                bodyIcon={"ion ion-bag"}
+                link="/clients"
               />
               <CardSection
-              header="150"
-              boxProperty={"small-box bg-info"}
-              body="Clients"
-              footer="More Info"
-              footerIcon="fas fa-arrow-circle-right"
-              color=""
-              bodyIcon={"ion ion-bag"}
-              link="/clients"
+                header="150"
+                boxProperty={"small-box bg-info"}
+                body="Clients"
+                footer="More Info"
+                footerIcon="fas fa-arrow-circle-right"
+                color=""
+                bodyIcon={"ion ion-bag"}
+                link="/clients"
               />
               <CardSection
-              header="150"
-              boxProperty={"small-box bg-info"}
-              body="Clients"
-              footer="More Info"
-              footerIcon="fas fa-arrow-circle-right"
-              color=""
-              bodyIcon={"ion ion-bag"}
-              link="/clients"
-            />
+                header="150"
+                boxProperty={"small-box bg-info"}
+                body="Clients"
+                footer="More Info"
+                footerIcon="fas fa-arrow-circle-right"
+                color=""
+                bodyIcon={"ion ion-bag"}
+                link="/clients"
+              />
             </div>
             {/* Main row */}
-           {auditors &&  <Table auditors={auditors} />}
-            
+            {auditors && <Table auditors={auditors} />}
+
             {/* /.row (main row) */}
           </div>
           {/* /.container-fluid */}
@@ -65,22 +76,7 @@ const Dashboard = ({ auditors }) => {
         {/* /.content */}
       </div>
     </div>
-
-    // <div>
-    //   {[1, 2, 3].map((a) => {
-    //     return (
-
-    //     );
-    //   })}
-    //   )
-    // </div>
   );
 };
-
-// auditors.map((a) => {
-//   return (
-
-//   );
-// }
 
 export default Dashboard;

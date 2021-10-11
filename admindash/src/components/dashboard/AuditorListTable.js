@@ -1,14 +1,15 @@
 import React from "react";
 import { Button } from "react-bootstrap";
-import { useSelector } from "react-redux";
+import { useSelector, useDispath, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
-
+import { deleteAuditor } from "../../actions/userActions";
 const Table = ({ auditors }) => {
+  const dispatch = useDispatch();
   const userLogin = useSelector((state) => state.userLogin);
   const { userInfo } = userLogin;
   const deleteHandler = (id) => {
     if (window.confirm("Are you sure?")) {
-      // dispatch(deleteClient(id));
+      dispatch(deleteAuditor(id));
     }
   };
   const editHandler = (id) => {};
