@@ -1,13 +1,13 @@
 import React from 'react'
 
-const Sidebar = () => {
+const Sidebar = ({userInfo}) => {
     return (
             <div>
   <aside className="main-sidebar sidebar-dark-primary elevation-4">
     {/* Brand Logo */}
     <a href="index3.html" className="brand-link">
       <img src="dist/img/AdminLTELogo.png" alt="Master Logo" className="brand-image img-circle elevation-3" style={{opacity: '.8'}} />
-      <span className="brand-text font-weight-light">Master Name</span>
+      <span className="brand-text font-weight-light">{userInfo.email}</span>
     </a>
     {/* Sidebar */}
     <div className="sidebar">
