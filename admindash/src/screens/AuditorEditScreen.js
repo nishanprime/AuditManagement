@@ -6,6 +6,9 @@ import Message from "../components/Message";
 import Loader from "../components/Loader";
 import FormContainer from "../components/FormContainer";
 import axios from "axios";
+import Footer from "../components/Footer";
+import Header from "../components/Header";
+import Sidebar from "../components/Sidebar";
 import {
   CLIENT_UPDATE_PROFILE_RESET,
   CLIENT_UPDATE_RESET,
@@ -111,6 +114,9 @@ const AuditorEditScreen = ({ match, history }) => {
 
   return (
     <>
+      <Header />
+      <Sidebar />
+      <Footer/>
       <Link to="/dashboard" className="btn btn-light my-3">
         Go Back
       </Link>
