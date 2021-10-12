@@ -13,38 +13,12 @@ const Auditors = ({ auditors, userLogin }) => {
 
   const { userInfo } = userLogin;
 
-
-
   const createAuditor = () => {
     dispatch(createAuditorAction());
   };
 
-
-
   return (
     <div>
-<<<<<<< HEAD
-      <Table striped bordered hover responsive variant="light" className="table-sm">
-        <thead>
-          <tr>
-            <th colSpan="3">List of Auditors</th>
-          </tr>
-          <tr>
-            
-            <th>Name</th>
-            <th>Email</th>
-            <th>Joined Date</th>
-          </tr>
-        </thead>
-        <tbody>
-          {auditors &&
-            auditors.map((auditor) => (
-              <tr key={auditor._id}>
-                <td>{auditor.name}</td>
-                <td>{auditor.email}</td>
-
-                <td>{auditor.createdAt.substring(0, 10)}</td>
-=======
       {userInfo && (
         <div>
           <Button onClick={createAuditor} className="btn btn-outline-dark">
@@ -59,7 +33,6 @@ const Auditors = ({ auditors, userLogin }) => {
                 <th>Joined Date</th>
                 <th>Is Master?</th>
                 <th>Edit/Del</th>
->>>>>>> cc57c01363c8ed4772c75e5da56eb4fc99d5588f
               </tr>
             </thead>
             <tbody>
@@ -85,7 +58,9 @@ const Auditors = ({ auditors, userLogin }) => {
                       </td>
                     </Link>
                     <td>{auditor.name}</td>
-                    <td>{auditor.email}</td>
+                    <td>
+                      <a href={`mailto:${auditor.email}`}>{auditor.email}</a>
+                    </td>
 
                     <td>{auditor.createdAt.substring(0, 10)}</td>
                     <td>

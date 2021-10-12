@@ -2,7 +2,7 @@ import React from "react";
 import { Button } from "react-bootstrap";
 import { useSelector, useDispath, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
-import { deleteAuditor } from "../../actions/userActions";
+import { createAuditorAction, deleteAuditor } from "../../actions/userActions";
 const Table = ({ auditors }) => {
   const dispatch = useDispatch();
   const userLogin = useSelector((state) => state.userLogin);
@@ -12,13 +12,22 @@ const Table = ({ auditors }) => {
       dispatch(deleteAuditor(id));
     }
   };
-  const editHandler = (id) => {};
+
+  const createAuditorHandler = () => {
+    dispatch(createAuditorAction());
+  };
   return (
     <>
       {/* {/* <!-- Main content --> */}
       <div className="card">
-        <div className="card-header">
+        <div
+          className="card-header"
+          style={{ justifyContent: "space-between", display: "flex" }}
+        >
           <h3 className="card-title">Auditors</h3>
+          <Button className="btn btn-dark" onClick={createAuditorHandler}>
+            Create Auditor
+          </Button>
         </div>
         {/* <!-- /.card-header --> */}
         <div className="card-body" style={{ "overflow-x": "auto" }}>
@@ -46,7 +55,9 @@ const Table = ({ auditors }) => {
                         <img width="40px" height="auto" src={audi.dp} />
                       </td>
                       <td>{audi.name}</td>
-                      <td>{audi.email}</td>
+                      <td>
+                        <a href={`mailto:${audi.email}`}>{audi.email}</a>
+                      </td>
                       <td>{audi.createdAt.substring(0, 10)}</td>
                       <td>{audi.updatedAt.substring(0, 10)}</td>
                       <td>

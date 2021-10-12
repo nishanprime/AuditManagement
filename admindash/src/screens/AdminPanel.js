@@ -45,8 +45,7 @@ const AdminPanel = ({ location, history }) => {
   } = auditorCreate;
 
   useEffect(() => {
-    console.log("Printing userinfo");
-    console.log(userInfo);
+    dispatch({ type: USER_CREATE_RESET });
     if (logoutSuccess) {
       history.push("/login");
     }
@@ -54,7 +53,7 @@ const AdminPanel = ({ location, history }) => {
       history.push(redirect);
     }
     if (createdAuditorSuccess) {
-      history.push(`/master/auditors/${createdAuditor._id}/edit`);
+      history.push(`/master/auditor/${createdAuditor._id}/edit`);
     } else {
       if (userInfo && userInfo.isAdmin) {
         dispatch(getAuditorsAction());
