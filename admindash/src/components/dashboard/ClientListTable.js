@@ -68,7 +68,13 @@ const Table = ({ clients }) => {
                       <td>{client.createdAt.substring(0, 10)}</td>
                       <td>{client.updatedAt.substring(0, 10)}</td>
                       <td>
-                        <Link to={`/admin/clients/${client._id}/edit`}>
+                        <div
+                          style={{
+                            display: "flex",
+                            justifyContent: "space-evenly",
+                          }}
+                        >
+                          <Link to={`/admin/clients/${client._id}/edit`}>
                           <i
                             style={{ color: "blue" }}
                             className="fas fa-edit"
@@ -81,6 +87,7 @@ const Table = ({ clients }) => {
                             className="fas fa-trash"
                           ></i>
                         </Link>
+                        </div>
                       </td>
                     </tr>
                   );
