@@ -143,20 +143,20 @@ const ClientScreen = ({ location, history, match }) => {
                     </div>
                     {/* <!-- /.card --> */}
 
-                    {/* <!-- About Me Box --> */}
-                    <div className="card card-primary">
+              
+                        {/* <!-- About Me Box --> */}
+                    <div className="card card-primary col-md-4">
                       <div className="card-header">
-                        <h3 className="card-title">About Me</h3>
+                        <h3 className="card-title">About Client</h3>
                       </div>
                       {/* <!-- /.card-header --> */}
                       <div className="card-body">
                         <strong>
-                          <i className="fas fa-book mr-1"></i> Education
+                          <i className="fas fa-book mr-1"></i> Address
                         </strong>
 
                         <p className="text-muted">
-                          B.S. in Computer Science from the University of
-                          Tennessee at Knoxville
+                          {client.address}
                         </p>
 
                         <hr />
@@ -166,21 +166,7 @@ const ClientScreen = ({ location, history, match }) => {
                           Location
                         </strong>
 
-                        <p className="text-muted">Malibu, California</p>
-
-                        <hr />
-
-                        <strong>
-                          <i className="fas fa-pencil-alt mr-1"></i> Skills
-                        </strong>
-
-                        <p className="text-muted">
-                          <span className="tag tag-danger">UI Design</span>
-                          <span className="tag tag-success">Coding</span>
-                          <span className="tag tag-info">Javascript</span>
-                          <span className="tag tag-warning">PHP</span>
-                          <span className="tag tag-primary">Node.js</span>
-                        </p>
+                        <p className="text-muted">Nepal</p>
 
                         <hr />
 
@@ -195,7 +181,9 @@ const ClientScreen = ({ location, history, match }) => {
                       </div>
                       {/* <!-- /.card-body --> */}
                     </div>
-                    {/* <!-- /.card --> */}
+                        {/* <!-- /.card --> */}
+                  
+
                   </div>
                 </div>
                 {/* <!-- /.row --> */}

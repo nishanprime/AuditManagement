@@ -24,8 +24,7 @@ const Table = ({ clients }) => {
           className="card-header"
           style={{ display: "flex", justifyContent: "space-between" }}
         >
-          <h3 className="card-title">Clients</h3>
-          <Button className="btn btn-dark">Create Client</Button>
+          <Button className="btn btn-dark float-right">Add New Client</Button>
         </div>
         {/* <!-- /.card-header --> */}
         <div className="card-body" style={{ "overflow-x": "auto" }}>
@@ -68,7 +67,13 @@ const Table = ({ clients }) => {
                       <td>{client.createdAt.substring(0, 10)}</td>
                       <td>{client.updatedAt.substring(0, 10)}</td>
                       <td>
-                        <Link to={`/admin/clients/${client._id}/edit`}>
+                        <div
+                          style={{
+                            display: "flex",
+                            justifyContent: "space-evenly",
+                          }}
+                        >
+                          <Link to={`/admin/clients/${client._id}/edit`}>
                           <i
                             style={{ color: "blue" }}
                             className="fas fa-edit"
@@ -81,6 +86,7 @@ const Table = ({ clients }) => {
                             className="fas fa-trash"
                           ></i>
                         </Link>
+                        </div>
                       </td>
                     </tr>
                   );

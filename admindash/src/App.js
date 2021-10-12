@@ -12,12 +12,14 @@ import ClientScreen from "./screens/ClientScreen";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import Sidebar from "./components/Sidebar";
+import website from "./components/website";
 const App = () => {
   const userLogin = useSelector((state) => state.userLogin);
   const { userInfo } = userLogin;
   return (
     <>
       <Router>
+        <Route path="/" component={website} exact/>
         {userInfo && userInfo.isAdmin && <Header />}
         {userInfo && userInfo.isAdmin && <Sidebar />}
         <div>

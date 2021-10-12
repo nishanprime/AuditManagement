@@ -53,7 +53,7 @@ const AdminPanel = ({ location, history }) => {
       history.push(redirect);
     }
     if (createdAuditorSuccess) {
-      history.push(`/master/auditor/${createdAuditor._id}/edit`);
+      history.push(`/master/auditor/${createdAuditor._id}/edit?redirect=create`);
     } else {
       if (userInfo && userInfo.isAdmin) {
         dispatch(getAuditorsAction());
