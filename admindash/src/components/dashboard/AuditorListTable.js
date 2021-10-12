@@ -49,8 +49,8 @@ const Table = ({ auditors }) => {
               {auditors &&
                 auditors.map((audi) => {
                   return (
-                    <tr>
-                      <td>{audi._id}</td>
+                    <tr key={audi._id}>
+                      <td>{audi.auditorId}</td>
                       <td className="text-center">
                         <img width="40px" height="auto" src={audi.dp} />
                       </td>
@@ -87,7 +87,7 @@ const Table = ({ auditors }) => {
                                 className="fas fa-edit"
                               ></i>
                             </Link>
-                          ) : userInfo.isMaster ? (
+                          ) : userInfo.isMaster && !audi.isMaster ? (
                             <Link to={`/master/auditor/${audi._id}/edit`}>
                               <i
                                 style={{ color: "blue" }}
@@ -96,7 +96,7 @@ const Table = ({ auditors }) => {
                             </Link>
                           ) : null}
                           {userInfo._id ===
-                          audi._id ? null : userInfo.isMaster ? (
+                          audi._id ? null : audi.isMaster ? null : userInfo.isMaster ? (
                             <Link
                               to="#"
                               onClick={() => deleteHandler(audi._id)}

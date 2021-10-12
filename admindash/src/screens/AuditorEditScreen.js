@@ -1,24 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { Button, Col, Form, Row } from "react-bootstrap";
-import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import Message from "../components/Message";
 import Loader from "../components/Loader";
-import FormContainer from "../components/FormContainer";
 import axios from "axios";
-import Footer from "../components/Footer";
-import Header from "../components/Header";
-import Sidebar from "../components/Sidebar";
 import {
-  CLIENT_UPDATE_PROFILE_RESET,
-  CLIENT_UPDATE_RESET,
-} from "../constants/clientConstants";
-import {
-  getASingleClientDetails,
-  updateClientProfile,
-} from "../actions/clientAction";
-import {
-  USER_CREATE_RESET,
+  USER_SINGLE_DETAILS_RESET,
   USER_UPDATE_PROFILE_RESET,
 } from "../constants/userConstants";
 import {
@@ -77,8 +64,8 @@ const AuditorEditScreen = ({ match, history }) => {
       history.push("/");
     }
     if (successUpdate) {
+      dispatch({ type: USER_SINGLE_DETAILS_RESET });
       dispatch({ type: USER_UPDATE_PROFILE_RESET });
-      // dispatch({ type: USER_CREATE_RESET });
       history.push("/dashboard");
     } else {
       if (!auditor || !auditor.name || auditor._id !== auditorId) {
@@ -124,6 +111,7 @@ const AuditorEditScreen = ({ match, history }) => {
         <>
           {loadingUpdate && <Loader />}
           {errorUpdate && <Message variant="danger">{errorUpdate}</Message>}
+          {errorUpdate && console.log(errorUpdate)}
           {loading ? (
             <Loader />
           ) : error ? (
