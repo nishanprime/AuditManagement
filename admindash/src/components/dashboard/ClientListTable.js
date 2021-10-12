@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Button } from "react-bootstrap";
 import { useSelector, useDispath, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import { deleteClient } from "../../actions/clientAction";
+import { CLIENT_SINGLE_DETAILS_RESET } from "../../constants/clientConstants";
 const Table = ({ clients }) => {
   const dispatch = useDispatch();
   const userLogin = useSelector((state) => state.userLogin);
@@ -12,11 +13,17 @@ const Table = ({ clients }) => {
       dispatch(deleteClient(id));
     }
   };
+  useEffect(() => {
+    dispatch({ type: CLIENT_SINGLE_DETAILS_RESET });
+  }, [dispatch]);
   return (
     <>
       {/* {/* <!-- Main content --> */}
       <div className="card">
-        <div className="card-header" style={{display:"flex", justifyContent: "space-between" }}>
+        <div
+          className="card-header"
+          style={{ display: "flex", justifyContent: "space-between" }}
+        >
           <h3 className="card-title">Clients</h3>
           <Button className="btn btn-dark">Create Client</Button>
         </div>
