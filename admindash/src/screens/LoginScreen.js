@@ -1,16 +1,17 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { useState, useEffect } from "react";
-import { login } from "../actions/userActions";
+import { adminLogin } from "../actions/userActions";
 import Message from "../components/Message";
 import Loader from "../components/Loader";
-import { Form } from "react-bootstrap";
+import { Col, Form, Row } from "react-bootstrap";
 
 const LoginScreen = ({ location, history }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [submitError, setSubmitError] = useState("");
+  const [isAdmin, setIsAdmin] = useState(false);
+  const [isClient, setIsClient] = useState(true);
   const dispatch = useDispatch();
   const redirect = location.search
     ? location.search.split("=")[1]
@@ -21,7 +22,11 @@ const LoginScreen = ({ location, history }) => {
     if (email.length === 0 || password.length === 0) {
       setSubmitError("Make sure you enter both email and password!");
     } else {
-      dispatch(login(email, password));
+      if (isAdmin) {
+        dispatch(adminLogin(email, password));
+      } else if (isClient) {
+        
+      }
       setSubmitError("");
     }
   };
@@ -92,7 +97,34 @@ const LoginScreen = ({ location, history }) => {
                     </div>
                   </div>
                 </Form.Group>
-
+                <Row>
+                  <Col>
+                    <Form.Group controlId="isAdmin" className="py-3">
+                      <Form.Check
+                        type="checkbox"
+                        label="Admin Login"
+                        checked={isAdmin}
+                        onChange={(e) => {
+                          setIsClient(!e.target.checked);
+                          setIsAdmin(e.target.checked);
+                        }}
+                      ></Form.Check>
+                    </Form.Group>
+                  </Col>
+                  <Col>
+                    <Form.Group controlId="isClient" className="py-3">
+                      <Form.Check
+                        type="checkbox"
+                        label="Client Login"
+                        checked={isClient}
+                        onChange={(e) => {
+                          setIsAdmin(!e.target.checked);
+                          setIsClient(e.target.checked);
+                        }}
+                      ></Form.Check>
+                    </Form.Group>
+                  </Col>
+                </Row>
                 <div className="row">
                   {loading ? (
                     <Loader />

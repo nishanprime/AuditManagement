@@ -35,7 +35,7 @@ import axios from "axios";
 import { CLIENT_DETAILS_RESET } from "../constants/clientConstants";
 
 //   import { ORDER_MY_ORDERS_LIST_RESET } from "../constants/orderConstants";
-export const login = (email, password) => async (dispatch) => {
+export const adminLogin = (email, password) => async (dispatch) => {
   try {
     dispatch({
       type: USER_LOGIN_REQUEST,
