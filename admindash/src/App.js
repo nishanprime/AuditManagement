@@ -19,7 +19,7 @@ const App = () => {
   return (
     <>
       <Router>
-        
+        <Route path="/" component={website} exact/>
         {userInfo && userInfo.isAdmin && <Header />}
         {userInfo && userInfo.isAdmin && <Sidebar />}
         <div>
