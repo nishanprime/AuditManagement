@@ -3,14 +3,16 @@ import '../website.css'
 
 const website = () => {
     return (
-        <div className="App">
-      <div className="container">
+        <div className="websitebody">
+        <div className="website">
+      <div className="webcontainer">
         <h1>
           Website
           <br />
           Coming Soon
         </h1>
       </div>
+    </div>
     </div>
     )
 }
