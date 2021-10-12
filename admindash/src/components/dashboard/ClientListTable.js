@@ -16,8 +16,9 @@ const Table = ({ clients }) => {
     <>
       {/* {/* <!-- Main content --> */}
       <div className="card">
-        <div className="card-header">
+        <div className="card-header" style={{display:"flex", justifyContent: "space-between" }}>
           <h3 className="card-title">Clients</h3>
+          <Button className="btn btn-dark">Create Client</Button>
         </div>
         {/* <!-- /.card-header --> */}
         <div className="card-body" style={{ "overflow-x": "auto" }}>
@@ -51,7 +52,9 @@ const Table = ({ clients }) => {
                         <img width="40px" height="auto" src={client.dp} />
                       </td>
                       <td>{client.name}</td>
-                      <td>{client.email}</td>
+                      <td>
+                        <a href={`mailto:${client.email}`}>{client.email}</a>
+                      </td>
                       <td>{client.address}</td>
                       <td>{client.phone}</td>
                       <td>{client.registrationNumber}</td>

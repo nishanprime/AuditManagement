@@ -17,7 +17,10 @@ import {
   getASingleClientDetails,
   updateClientProfile,
 } from "../actions/clientAction";
-import { USER_UPDATE_PROFILE_RESET } from "../constants/userConstants";
+import {
+  USER_CREATE_RESET,
+  USER_UPDATE_PROFILE_RESET,
+} from "../constants/userConstants";
 import {
   getASingleAuditorInfo,
   updateAuditorProfile,
@@ -75,6 +78,7 @@ const AuditorEditScreen = ({ match, history }) => {
     }
     if (successUpdate) {
       dispatch({ type: USER_UPDATE_PROFILE_RESET });
+      // dispatch({ type: USER_CREATE_RESET });
       history.push("/dashboard");
     } else {
       if (!auditor || !auditor.name || auditor._id !== auditorId) {
@@ -172,6 +176,18 @@ const AuditorEditScreen = ({ match, history }) => {
                   placeholder="Enter Email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
+                ></Form.Control>
+              </Form.Group>
+
+              <Form.Group controlId="password" className="py-3">
+                <Form.Label>
+                  Change Password (Leave as it is if you don't want to)
+                </Form.Label>
+                <Form.Control
+                  type="password"
+                  placeholder="Enter Password (Default Password is: 123456)"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
                 ></Form.Control>
               </Form.Group>
 

@@ -38,7 +38,7 @@ export const createAuditor = asyncHandler(async (req, res) => {
       parentAuditor: User._id,
       name: "Enter Full Name",
       dp: "https://image.freepik.com/free-vector/businessman-character-avatar-isolated_24877-60111.jpg",
-      password: "Create Password",
+      password: "123456",
       email: `Enter Auditor Email-- ${uniqueId.generate(new Date().toJSON())}`,
     });
 
