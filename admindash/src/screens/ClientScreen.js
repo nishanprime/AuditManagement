@@ -6,6 +6,7 @@ import Message from "../components/Message";
 import Loader from "../components/Loader";
 import { getASingleClientDetails } from "../actions/clientAction";
 import { Link } from "react-router-dom";
+import { CLIENT_SINGLE_DETAILS_RESET } from "../constants/clientConstants";
 const ClientScreen = ({ location, history, match }) => {
   const clientMongoId = match.params.id;
   const [user, setUser] = useState({});
@@ -33,7 +34,7 @@ const ClientScreen = ({ location, history, match }) => {
     if (!userInfo || !userInfo.isAdmin) {
       history.push("/login");
     } else {
-      if (!client || !client.name) {
+      if (!client || !client.name || client._id !== clientMongoId) {
         dispatch(getASingleClientDetails(clientMongoId));
       } else {
         setName(client.name);

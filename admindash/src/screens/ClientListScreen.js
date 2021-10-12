@@ -35,7 +35,6 @@ const ClientListScreen = ({ history }) => {
     createdClient,
   } = clientCreate;
   useEffect(() => {
-    dispatch({ type: CLIENT_CREATE_RESET });
     if (!userInfo || !userInfo.isAdmin) {
       history.push("/login");
     }
