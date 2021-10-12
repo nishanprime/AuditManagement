@@ -42,7 +42,11 @@ const Table = ({ clients }) => {
                 clients.map((client) => {
                   return (
                     <tr key={client._id}>
-                      <td>{client.clientId}</td>
+                      <td>
+                        <Link to={`/admin/clients/${client._id}/info`}>
+                          {client.clientId}
+                        </Link>
+                      </td>
                       <td className="text-center">
                         <img width="40px" height="auto" src={client.dp} />
                       </td>
