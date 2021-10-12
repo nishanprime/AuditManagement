@@ -6,7 +6,7 @@ import Breadcrumbs from "./Breadcrumbs";
 import CardSection from "./CardSection";
 
 const Dashboard = ({ auditors }) => {
-  const dispatch=useDispatch()
+  const dispatch = useDispatch();
   const auditorDelete = useSelector((state) => state.auditorDelete);
 
   const {
@@ -20,7 +20,7 @@ const Dashboard = ({ auditors }) => {
   return (
     <div>
       <div className="content-wrapper">
-        <Breadcrumbs page="Dashboard"/>
+        <Breadcrumbs page="Dashboard" />
         {/* Main content */}
         <section className="content">
           <div className="container-fluid">
@@ -34,16 +34,6 @@ const Dashboard = ({ auditors }) => {
                 color=""
                 bodyIcon={"ion ion-ios-people"}
                 link="/admin/clientlist"
-              />
-              <CardSection
-                header="150"
-                boxProperty={"small-box bg-success"}
-                body="Auditors"
-                footer="More Info"
-                footerIcon="fas fa-arrow-circle-right"
-                color=""
-                bodyIcon={"ion ion-person"}
-                link="/auditors"
               />
               <CardSection
                 header="150"

@@ -57,8 +57,9 @@ const Sidebar = ({ history }) => {
               >
                 {/* Add icons to the links using the .nav-icon class
          with font-awesome or any other icon font library */}
-                <li className="nav-item has-treeview menu-open">
-                  <Link to="/dashboard" className="nav-link active">
+                <li className="nav-item has-treeview menu-open active">
+                  <Link to="/dashboard" className="nav-link ">
+                    {/* <Link to="/dashboard" className="nav-link active"> */}
                     <i className="nav-icon fas fa-tachometer-alt" />
                     <p>Dashboard</p>
                   </Link>
