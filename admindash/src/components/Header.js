@@ -10,7 +10,6 @@ const Header = ({ history }) => {
       if (window.confirm("Want to logout?")) {
         dispatch(logout());
       }
-      history.push("/login");
     } catch (error) {
       console.log(error);
     }
@@ -48,7 +47,7 @@ const Header = ({ history }) => {
         {/* <!-- Right navbar links --> */}
         <ul className="navbar-nav ml-auto">
           <div class="column">
-            <Nav.Item onClick={logouthandler} style={{cursor:"pointer"}}>
+            <Nav.Item onClick={logouthandler} style={{ cursor: "pointer" }}>
               <div className="float-left mr-2">Logout</div>
               <i className="fas fa-sign-out-alt"></i>
             </Nav.Item>

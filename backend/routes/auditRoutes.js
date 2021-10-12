@@ -1,15 +1,20 @@
 import express from "express";
 import {
+  authClient,
   clientDelete,
   createClient,
   fetchClients,
   getClientDetails,
   updateClient,
-} from "../controller/auditFileController.js";
+} from "../controller/clientController.js";
 import { authUser } from "../controller/userController.js";
 import { isAdmin, protect } from "../middleware/authMiddleware.js";
 
 const router = express.Router();
+
+router.route("/login").post(authClient);
+
+
 
 router
   .route("/")

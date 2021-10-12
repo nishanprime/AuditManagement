@@ -36,6 +36,7 @@ const ClientListScreen = ({ history }) => {
     createdClient,
   } = clientCreate;
   useEffect(() => {
+    dispatch({ type: CLIENT_CREATE_RESET });
     if (!userInfo || !userInfo.isAdmin) {
       history.push("/login");
     }
@@ -62,12 +63,12 @@ const ClientListScreen = ({ history }) => {
     //  <!-- Content Wrapper. Contains page content -->
     <>
       <div className="content-wrapper">
-        <Breadcrumbs page="Clients"/>
+        <Breadcrumbs page="Clients" />
         {loading ? (
           <Loader />
         ) : error ? (
           <Message variant="danger">{error}</Message>
-          ) : (
+        ) : (
           <ClientListTable clients={clients} />
         )}
       </div>

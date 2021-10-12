@@ -13,12 +13,14 @@ import {
   clientCreateReducer,
   clientDeleteReducer,
   clientDetailsReducer,
+  clientLoginReducer,
   clientUpdateProfileReducer,
   singleClientDetailsReducer,
 } from "./reducers/clientReducer.js";
 
 const reducer = combineReducers({
   userLogin: userLoginReducer,
+  clientLogin: clientLoginReducer,
   clientDetails: clientDetailsReducer,
   currentClientDetails: singleClientDetailsReducer,
   auditorsDetails: auditorsDetailReducer,
@@ -34,8 +36,14 @@ const reducer = combineReducers({
 const userInfoFromStorage = localStorage.getItem("userInfo")
   ? JSON.parse(localStorage.getItem("userInfo"))
   : null;
+
+const clientInfoFromStorage = localStorage.getItem("clientInfo")
+  ? JSON.parse(localStorage.getItem("clientInfo"))
+  : null;
+
 const initialState = {
   userLogin: { userInfo: userInfoFromStorage },
+  clientLogin: { clientInfo: clientInfoFromStorage },
 };
 const middleware = [thunk];
 const store = createStore(

@@ -10,6 +10,10 @@ import {
   CLIENT_DETAILS_REQUEST,
   CLIENT_DETAILS_RESET,
   CLIENT_DETAILS_SUCCESS,
+  CLIENT_LOGIN_FAIL,
+  CLIENT_LOGIN_REQUEST,
+  CLIENT_LOGIN_SUCCESS,
+  CLIENT_LOGOUT,
   CLIENT_SINGLE_DETAILS_FAIL,
   CLIENT_SINGLE_DETAILS_REQ,
   CLIENT_SINGLE_DETAILS_RESET,
@@ -90,6 +94,21 @@ export const clientCreateReducer = (state = { createdClient: {} }, action) => {
       return { loading: false, error: action.payload };
     case CLIENT_CREATE_RESET:
       return {};
+    default:
+      return state;
+  }
+};
+
+export const clientLoginReducer = (state = {}, action) => {
+  switch (action.type) {
+    case CLIENT_LOGIN_REQUEST:
+      return { loading: true };
+    case CLIENT_LOGIN_SUCCESS:
+      return { loading: false, clientInfo: action.payload };
+    case CLIENT_LOGIN_FAIL:
+      return { loading: false, error: action.payload };
+    case CLIENT_LOGOUT:
+      return { logoutSuccess: true };
     default:
       return state;
   }

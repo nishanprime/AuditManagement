@@ -50,12 +50,6 @@ const clientSchema = mongoose.Schema(
         required: true,
       },
     ],
-
-    // isAdmin: {
-    //   type: Boolean,
-    //   required: true,
-    //   default: false,
-    // },
   },
   {
     timestamps: true,
@@ -63,8 +57,8 @@ const clientSchema = mongoose.Schema(
 );
 
 clientSchema.methods.matchPassword = async function (enteredPassword) {
-  console.log("I am comparing client password");
-  return await bcrypt.compare(enteredPassword, this.password);
+  const client = await Client.findOne({ email: this.email }, "password").exec();
+  return await bcrypt.compare(enteredPassword, client.password);
 };
 
 clientSchema.pre("save", async function (next) {

@@ -18,6 +18,7 @@ export const authUser = asyncHandler(async (req, res) => {
       isMaster: user.isMaster,
       parent: user.parentAuditor,
       dp: user.dp,
+      auditorId:user.auditorId
     });
   } else {
     res.status(401);

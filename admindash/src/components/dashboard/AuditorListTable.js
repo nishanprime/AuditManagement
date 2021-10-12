@@ -50,7 +50,11 @@ const Table = ({ auditors }) => {
                 auditors.map((audi) => {
                   return (
                     <tr key={audi._id}>
-                      <td>{audi.auditorId}</td>
+                      <td>
+                        <Link to={`/master/auditors/${audi._id}/info`}>
+                          {audi.auditorId}
+                        </Link>
+                      </td>
                       <td className="text-center">
                         <img width="40px" height="auto" src={audi.dp} />
                       </td>
@@ -81,14 +85,18 @@ const Table = ({ auditors }) => {
                           }}
                         >
                           {userInfo._id === audi._id ? (
-                            <Link to={`/master/auditor/${audi._id}/edit?redirect=edit`}>
+                            <Link
+                              to={`/master/auditor/${audi._id}/edit?redirect=edit`}
+                            >
                               <i
                                 style={{ color: "blue" }}
                                 className="fas fa-edit"
                               ></i>
                             </Link>
                           ) : userInfo.isMaster && !audi.isMaster ? (
-                            <Link to={`/master/auditor/${audi._id}/edit?redirect=edit`}>
+                            <Link
+                              to={`/master/auditor/${audi._id}/edit?redirect=edit`}
+                            >
                               <i
                                 style={{ color: "blue" }}
                                 className="fas fa-edit"

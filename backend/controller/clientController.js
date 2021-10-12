@@ -6,6 +6,22 @@ import UserModel from "../models/userModel.js";
 import path from "path";
 import fs from "fs";
 
+export const authClient = asyncHandler(async (req, res) => {
+  const { email, password } = req.body;
+  const client = await ClientModel.findOne({ email }).populate(
+    "user",
+    "name email dp"
+  );
+
+  if (client && (await client.matchPassword(password))) {
+    res.send(client);
+  } else {
+    res.status(401);
+    throw new Error("Invalid Credentials");
+  }
+});
+
+
 export const createClient = asyncHandler(async (req, res) => {
   const User = await UserModel.findById(req.user._id);
   if (User) {

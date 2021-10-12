@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { Button } from "react-bootstrap";
 import { useSelector, useDispath, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
-import { deleteClient } from "../../actions/clientAction";
+import { createClientAction, deleteClient } from "../../actions/clientAction";
 import { CLIENT_SINGLE_DETAILS_RESET } from "../../constants/clientConstants";
 const Table = ({ clients }) => {
   const dispatch = useDispatch();
@@ -16,6 +16,10 @@ const Table = ({ clients }) => {
   useEffect(() => {
     dispatch({ type: CLIENT_SINGLE_DETAILS_RESET });
   }, [dispatch]);
+
+  const addClientHandler = () => {
+    dispatch(createClientAction());
+  };
   return (
     <>
       {/* {/* <!-- Main content --> */}
@@ -24,7 +28,12 @@ const Table = ({ clients }) => {
           className="card-header"
           style={{ display: "flex", justifyContent: "space-between" }}
         >
-          <Button className="btn btn-dark float-right">Add New Client</Button>
+          <Button
+            onClick={addClientHandler}
+            className="btn btn-dark float-right"
+          >
+            Add New Client
+          </Button>
         </div>
         {/* <!-- /.card-header --> */}
         <div className="card-body" style={{ "overflow-x": "auto" }}>
@@ -74,18 +83,21 @@ const Table = ({ clients }) => {
                           }}
                         >
                           <Link to={`/admin/clients/${client._id}/edit`}>
-                          <i
-                            style={{ color: "blue" }}
-                            className="fas fa-edit"
-                          ></i>
-                        </Link>
+                            <i
+                              style={{ color: "blue" }}
+                              className="fas fa-edit"
+                            ></i>
+                          </Link>
 
-                        <Link to="#" onClick={() => deleteHandler(client._id)}>
-                          <i
-                            style={{ color: "red" }}
-                            className="fas fa-trash"
-                          ></i>
-                        </Link>
+                          <Link
+                            to="#"
+                            onClick={() => deleteHandler(client._id)}
+                          >
+                            <i
+                              style={{ color: "red" }}
+                              className="fas fa-trash"
+                            ></i>
+                          </Link>
                         </div>
                       </td>
                     </tr>
