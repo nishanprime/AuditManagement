@@ -1,3 +1,3 @@
-.nav-link:focus{
-    background-color: blue;
+:focus{
+    background-color: transparent!important;
 }
