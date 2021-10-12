@@ -76,17 +76,6 @@ const ClientScreen = ({ location, history, match }) => {
         <Message variant="danger">{error}</Message>
       ) : (
         <div>
-          <Row>
-            <Col>{client.clientId}</Col>
-            <Col>{client.user}</Col>
-            <Col>{client.name}</Col>
-            <Col>{client.email}</Col>
-            <Col>{client.address}</Col>
-            <Col>{client.phone}</Col>
-            <Col>{client.registrationNumber}</Col>
-            <Col>{client.createdAt && client.createdAt.substring(0, 10)}</Col>
-            <Col>{client.updatedAt && client.updatedAt.substring(0, 10)}</Col>
-          </Row>
           <div className="content-wrapper">
       {/* <!-- Content Header (Page header) --> */}
       <section className="content-header">
@@ -148,10 +137,6 @@ const ClientScreen = ({ location, history, match }) => {
                       <b>Last Updated</b> <Link to="#" className="float-right">{client.updatedAt && client.updatedAt.substring(0, 10)}</Link>
                     </li>
                   </ul>
-
-                  <Link to="#" className="btn btn-primary btn-block">
-                    <b>Follow</b>
-                  </Link>
                 </div>
                 {/* <!-- /.card-body --> */}
               </div>
