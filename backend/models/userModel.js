@@ -7,6 +7,11 @@ const userSchema = mongoose.Schema(
       required: false,
       ref: "User",
     },
+    auditorId: {
+      type: String,
+      required: true,
+      unique: true,
+    },
     name: {
       type: String,
       required: true,

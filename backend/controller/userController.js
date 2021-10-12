@@ -36,6 +36,7 @@ export const createAuditor = asyncHandler(async (req, res) => {
   if (User) {
     const auditor = new UserModel({
       parentAuditor: User._id,
+      auditorId: uniqueId.generate(new Date().toJSON()),
       name: "Enter Full Name",
       dp: "https://image.freepik.com/free-vector/businessman-character-avatar-isolated_24877-60111.jpg",
       password: "123456",
@@ -46,6 +47,7 @@ export const createAuditor = asyncHandler(async (req, res) => {
     res.status(201).json({
       _id: createdAuditor._id,
       parentAuditor: User._id,
+      auditorId: createdAuditor.auditorId,
       name: "Enter Full Name",
       dp: "https://image.freepik.com/free-vector/businessman-character-avatar-isolated_24877-60111.jpg",
       password: "Create Password",
