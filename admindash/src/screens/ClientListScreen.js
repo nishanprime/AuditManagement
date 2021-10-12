@@ -11,6 +11,7 @@ import {
 } from "../actions/clientAction";
 import { CLIENT_CREATE_RESET } from "../constants/clientConstants";
 import { Link } from "react-router-dom";
+import Breadcrumbs from "../components/dashboard/Breadcrumbs";
 
 const ClientListScreen = ({ history }) => {
   const dispatch = useDispatch();
@@ -61,11 +62,12 @@ const ClientListScreen = ({ history }) => {
     //  <!-- Content Wrapper. Contains page content -->
     <>
       <div className="content-wrapper">
+        <Breadcrumbs page="Clients"/>
         {loading ? (
           <Loader />
         ) : error ? (
           <Message variant="danger">{error}</Message>
-        ) : (
+          ) : (
           <ClientListTable clients={clients} />
         )}
       </div>

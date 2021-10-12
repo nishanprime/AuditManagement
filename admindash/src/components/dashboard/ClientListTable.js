@@ -24,8 +24,7 @@ const Table = ({ clients }) => {
           className="card-header"
           style={{ display: "flex", justifyContent: "space-between" }}
         >
-          <h3 className="card-title">Clients</h3>
-          <Button className="btn btn-dark">Create Client</Button>
+          <Button className="btn btn-dark float-right">Add New Client</Button>
         </div>
         {/* <!-- /.card-header --> */}
         <div className="card-body" style={{ "overflow-x": "auto" }}>
