@@ -81,14 +81,14 @@ const Table = ({ auditors }) => {
                           }}
                         >
                           {userInfo._id === audi._id ? (
-                            <Link to={`/master/auditor/${audi._id}/edit`}>
+                            <Link to={`/master/auditor/${audi._id}/edit?redirect=edit`}>
                               <i
                                 style={{ color: "blue" }}
                                 className="fas fa-edit"
                               ></i>
                             </Link>
                           ) : userInfo.isMaster && !audi.isMaster ? (
-                            <Link to={`/master/auditor/${audi._id}/edit`}>
+                            <Link to={`/master/auditor/${audi._id}/edit?redirect=edit`}>
                               <i
                                 style={{ color: "blue" }}
                                 className="fas fa-edit"

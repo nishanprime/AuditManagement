@@ -14,7 +14,7 @@ import {
 } from "../actions/userActions";
 import Breadcrumbs from "../components/dashboard/Breadcrumbs";
 
-const AuditorEditScreen = ({ match, history }) => {
+const AuditorEditScreen = ({ match, history,location }) => {
   const auditorId = match.params.id;
   const [name, setName] = useState("");
   const [password, setPassword] = useState("");
@@ -25,7 +25,6 @@ const AuditorEditScreen = ({ match, history }) => {
   const [dpUploading, setDpUploading] = useState(false);
   const [dpUploadError, setDpUploadError] = useState("");
   const dispatch = useDispatch();
-
   const userLogin = useSelector((state) => state.userLogin);
   const {
     loading: userInfoLoading,
@@ -107,7 +106,8 @@ const AuditorEditScreen = ({ match, history }) => {
   return (
     <>
       <div className="content-wrapper" style={{ padding: "12px" }}>
-        <Breadcrumbs page="Edit Auditor Details" />
+        {(location.search.split("=")[1] == "edit")?<Breadcrumbs page="Edit Auditor Details" />:<Breadcrumbs page="Add Auditor" />}
+        
         <>
           {loadingUpdate && <Loader />}
           {errorUpdate && <Message variant="danger">{errorUpdate}</Message>}
