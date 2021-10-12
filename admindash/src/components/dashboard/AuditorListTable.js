@@ -18,7 +18,7 @@ const Table = ({ auditors }) => {
       {/* {/* <!-- Main content --> */}
       <div className="card">
         <div className="card-header">
-          <h3 className="card-title">DataTable with default features</h3>
+          <h3 className="card-title">Auditors</h3>
         </div>
         {/* <!-- /.card-header --> */}
         <div className="card-body" style={{ "overflow-x": "auto" }}>

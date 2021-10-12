@@ -31,8 +31,7 @@ const App = () => {
           <Route path="/admin/clients/:id/edit" component={ClientEditScreen} />
           <Route path="/admin/clients/:id/info" component={ClientScreen} />
         </div>
-        {userInfo && userInfo.isAdmin && <Footer/>}
-
+        {userInfo && userInfo.isAdmin && <Footer />}
       </Router>
     </>
   );
