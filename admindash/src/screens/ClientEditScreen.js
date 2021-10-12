@@ -14,6 +14,7 @@ import {
   getASingleClientDetails,
   updateClientProfile,
 } from "../actions/clientAction";
+import { USER_CREATE_RESET } from "../constants/userConstants";
 
 const ClinetEditScreen = ({ match, history }) => {
   const clientId = match.params.id;
@@ -68,6 +69,8 @@ const ClinetEditScreen = ({ match, history }) => {
     );
   };
   useEffect(() => {
+    dispatch({ type: USER_CREATE_RESET });
+
     if (successUpdate) {
       dispatch({ type: CLIENT_UPDATE_PROFILE_RESET });
       history.push("/admin/clientlist");
@@ -85,6 +88,7 @@ const ClinetEditScreen = ({ match, history }) => {
         // setIsAdmin(client.isAdmin);
       }
     }
+    dispatch({ type: USER_CREATE_RESET });
   }, [client, dispatch, clientId, successUpdate, history]);
 
   const dpUploader = async (e) => {

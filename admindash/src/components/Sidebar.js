@@ -5,9 +5,9 @@ const Sidebar = ({ history }) => {
   const userLogin = useSelector((state) => state.userLogin);
   const { loading, userInfo, error } = userLogin;
 
-//   $(document).ready(funtion() {
-//     $('body').Layout();
-// })
+  //   $(document).ready(funtion() {
+  //     $('body').Layout();
+  // })
 
   useEffect(() => {
     if (!userInfo || !userInfo.name) {
@@ -19,7 +19,7 @@ const Sidebar = ({ history }) => {
       <>
         <aside className="main-sidebar sidebar-dark-primary elevation-4">
           {/* Brand Logo */}
-          <a href="index3.html" className="brand-link">
+          <Link to="/dashboard" className="brand-link">
             <img
               src="dist/img/AdminLTELogo.png"
               alt="Master Logo"
@@ -29,7 +29,7 @@ const Sidebar = ({ history }) => {
             <span className="brand-text font-weight-light">
               Saurya Auditors
             </span>
-          </a>
+          </Link>
           {/* Sidebar */}
           <div className="sidebar">
             {/* Sidebar user panel (optional) */}
@@ -38,13 +38,13 @@ const Sidebar = ({ history }) => {
                 <img
                   src={userInfo.dp}
                   className="img-circle elevation-2"
-                  alt="User Image"
+                  alt="User"
                 />
               </div>
               <div className="info">
-                <a href="#" className="d-block">
+                <Link to="#" className="d-block">
                   {userInfo.name}
-                </a>
+                </Link>
               </div>
             </div>
             {/* Sidebar Menu */}

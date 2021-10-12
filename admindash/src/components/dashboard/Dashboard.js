@@ -1,10 +1,12 @@
 import React, { useEffect } from "react";
-import { useSelector } from "react-redux";
+import { Button } from "react-bootstrap";
+import { useDispatch, useSelector } from "react-redux";
 import Table from "./AuditorListTable";
 import Breadcrumbs from "./Breadcrumbs";
 import CardSection from "./CardSection";
 
 const Dashboard = ({ auditors }) => {
+  const dispatch=useDispatch()
   const auditorDelete = useSelector((state) => state.auditorDelete);
 
   const {
@@ -31,9 +33,8 @@ const Dashboard = ({ auditors }) => {
                 footerIcon="fas fa-arrow-circle-right"
                 color=""
                 bodyIcon={"ion ion-ios-people"}
-                link="/clients"
+                link="/admin/clientlist"
               />
-              
               <CardSection
                 header="150"
                 boxProperty={"small-box bg-success"}

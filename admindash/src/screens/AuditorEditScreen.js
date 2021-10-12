@@ -115,108 +115,104 @@ const AuditorEditScreen = ({ match, history }) => {
 
   return (
     <>
-      <Header />
-      <Sidebar history={history}/>
-      <div className="content-wrapper">
+      <div className="content-wrapper" style={{ padding: "12px" }}>
         <Breadcrumbs page="Edit Auditor Details" />
         <>
-        {loadingUpdate && <Loader />}
-        {errorUpdate && <Message variant="danger">{errorUpdate}</Message>}
-        {loading ? (
-          <Loader />
-        ) : error ? (
-          <Message variant="danger">{error}</Message>
-        ) : (
-          <Form onSubmit={submitHandler}>
-            <Form.Group controlId="dp" className="py-3">
-              <Message variant="warning">
-                Valid file types are: jpeg, jpg, png
-              </Message>
-              {dpUploadError && (
-                <Message variant="danger">{dpUploadError}</Message>
-              )}
-              <Row>
-                <Col xl={9}>
-                  <Form.Label>
-                    Enter Profile Image URL or Select an image
-                  </Form.Label>
-                  <Form.Control
-                    type="name"
-                    placeholder="url"
-                    value={dp}
-                    onChange={(e) => setDp(e.target.value)}
-                  ></Form.Control>
-                </Col>
-                <Col xl={3} style={{}}>
-                  <Form.File
-                    style={{ position: "relative", top: "50%" }}
-                    id="dp-image"
-                    onChange={dpUploader}
-                  ></Form.File>
-                </Col>
-              </Row>
+          {loadingUpdate && <Loader />}
+          {errorUpdate && <Message variant="danger">{errorUpdate}</Message>}
+          {loading ? (
+            <Loader />
+          ) : error ? (
+            <Message variant="danger">{error}</Message>
+          ) : (
+            <Form onSubmit={submitHandler}>
+              <Form.Group controlId="dp" className="py-3">
+                <Message variant="warning">
+                  Valid file types are: jpeg, jpg, png
+                </Message>
+                {dpUploadError && (
+                  <Message variant="danger">{dpUploadError}</Message>
+                )}
+                <Row>
+                  <Col xl={9}>
+                    <Form.Label>
+                      Enter Profile Image URL or Select an image
+                    </Form.Label>
+                    <Form.Control
+                      type="name"
+                      placeholder="url"
+                      value={dp}
+                      onChange={(e) => setDp(e.target.value)}
+                    ></Form.Control>
+                  </Col>
+                  <Col xl={3} style={{}}>
+                    <Form.File
+                      style={{ position: "relative", top: "50%" }}
+                      id="dp-image"
+                      onChange={dpUploader}
+                    ></Form.File>
+                  </Col>
+                </Row>
 
-              {dpUploading && <Loader />}
-            </Form.Group>
-            <Form.Group controlId="name" className="py-3">
-              <Form.Label>Name</Form.Label>
-              <Form.Control
-                type="name"
-                placeholder="Enter Full Name"
-                value={name}
-                onChange={(e) => setName(e.target.value)}
-              ></Form.Control>
-            </Form.Group>
-            <Form.Group controlId="email" className="py-3">
-              <Form.Label>Email Address</Form.Label>
-              <Form.Control
-                type="email"
-                placeholder="Enter Email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-              ></Form.Control>
-            </Form.Group>
+                {dpUploading && <Loader />}
+              </Form.Group>
+              <Form.Group controlId="name" className="py-3">
+                <Form.Label>Name</Form.Label>
+                <Form.Control
+                  type="name"
+                  placeholder="Enter Full Name"
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
+                ></Form.Control>
+              </Form.Group>
+              <Form.Group controlId="email" className="py-3">
+                <Form.Label>Email Address</Form.Label>
+                <Form.Control
+                  type="email"
+                  placeholder="Enter Email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                ></Form.Control>
+              </Form.Group>
 
-            <Form.Group controlId="isAdmin" className="py-3">
-              <Form.Check
-                type="checkbox"
-                label="Is Admin"
-                checked={isAdmin}
-                onChange={(e) => {
-                  setIsAdmin(e.target.checked);
-                }}
-              ></Form.Check>
-            </Form.Group>
+              <Form.Group controlId="isAdmin" className="py-3">
+                <Form.Check
+                  type="checkbox"
+                  label="Is Admin"
+                  checked={isAdmin}
+                  onChange={(e) => {
+                    setIsAdmin(e.target.checked);
+                  }}
+                ></Form.Check>
+              </Form.Group>
 
-            <Form.Group controlId="isMaster" className="py-3">
-              <Form.Check
-                type="checkbox"
-                label="Is Master"
-                checked={isMaster}
-                onChange={(e) => {
-                  if (
-                    window.confirm(
-                      "Are you ready to give this user 100% access?"
-                    )
-                  ) {
-                    setIsMaster(e.target.checked);
-                  }
-                }}
-              ></Form.Check>
-            </Form.Group>
+              <Form.Group controlId="isMaster" className="py-3">
+                <Form.Check
+                  type="checkbox"
+                  label="Is Master"
+                  checked={isMaster}
+                  onChange={(e) => {
+                    if (
+                      window.confirm(
+                        "Are you ready to give this user 100% access?"
+                      )
+                    ) {
+                      setIsMaster(e.target.checked);
+                    }
+                  }}
+                ></Form.Check>
+              </Form.Group>
 
-            <Button type="submit" variant="primary">
-              Update
-            </Button>
-          </Form>
-        )}
-      </>
+              <Button type="submit" variant="primary">
+                Update
+              </Button>
+            </Form>
+          )}
+        </>
       </div>
       {/* <Link to="/dashboard" className="btn btn-light my-3">
         Go Back
       </Link> */}
-      
-      <Footer/>
     </>
   );
 };

@@ -2,20 +2,22 @@ import Footer from "../components/Footer";
 import Header from "../components/Header";
 import Sidebar from "../components/Sidebar";
 import Dashboard from "../components/dashboard/Dashboard";
-import { getAuditorsAction } from "../actions/userActions";
+import { getAuditorsAction, logout } from "../actions/userActions";
 import { getClientDetailsAction } from "../actions/clientAction";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState, React } from "react";
 import { USER_CREATE_RESET } from "../constants/userConstants";
 import Message from "../components/Message";
 import Loader from "../components/Loader";
+import { Button } from "react-bootstrap";
+import { Route } from "react-router-dom";
 
 const AdminPanel = ({ location, history }) => {
   const dispatch = useDispatch();
   const redirect = location.search ? location.search.split("=")[1] : "/login";
 
   const userLogin = useSelector((state) => state.userLogin);
-  const { loading, userInfo, error } = userLogin;
+  const { loading, userInfo, error, logoutSuccess } = userLogin;
 
   const clientDetails = useSelector((state) => state.clientDetails);
   const { loading: clientLoading, clients, error: clientError } = clientDetails;
@@ -43,9 +45,11 @@ const AdminPanel = ({ location, history }) => {
   } = auditorCreate;
 
   useEffect(() => {
-    dispatch({ type: USER_CREATE_RESET });
     console.log("Printing userinfo");
     console.log(userInfo);
+    if (logoutSuccess) {
+      history.push("/login");
+    }
     if (!userInfo || !userInfo.isAdmin) {
       history.push(redirect);
     }
@@ -57,8 +61,9 @@ const AdminPanel = ({ location, history }) => {
       }
     }
   }, [
-    history,
+    logoutSuccess,
     userInfo,
+    history,
     redirect,
     dispatch,
     successDelete,
@@ -69,8 +74,6 @@ const AdminPanel = ({ location, history }) => {
 
   return (
     <div>
-      <Header history={history} />
-      <Sidebar history={history} />
       {loading ? (
         <Loader />
       ) : error ? (
