@@ -15,9 +15,55 @@ import {
   CLIENT_CREATE_REQ,
   CLIENT_CREATE_SUCCESS,
   CLIENT_CREATE_RESET,
+  CLIENT_LOGIN_REQUEST,
+  CLIENT_LOGIN_SUCCESS,
+  CLIENT_LOGIN_FAIL,
+  CLIENT_LOGOUT,
 } from "../constants/clientConstants";
 import axios from "axios";
 import { USER_LOGIN_SUCCESS } from "../constants/userConstants";
+
+export const clientLoginAction = (email, password) => async (dispatch) => {
+  try {
+    dispatch({
+      type: CLIENT_LOGIN_REQUEST,
+    });
+    const config = {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    };
+    const { data } = await axios.post(
+      "/api/clients/login",
+      { email, password },
+      config
+    );
+    dispatch({
+      type: CLIENT_LOGIN_SUCCESS,
+      payload: data,
+    });
+    localStorage.setItem("clientInfo", JSON.stringify(data));
+  } catch (error) {
+    dispatch({
+      type: CLIENT_LOGIN_FAIL,
+      payload:
+        error.response && error.response.data.message
+          ? error.response.data.message
+          : error.message,
+    });
+  }
+};
+
+export const clientLogoutAction = () => (dispatch) => {
+  localStorage.removeItem("clientInfo");
+  dispatch({
+    type: CLIENT_LOGOUT,
+  });
+
+  // dispatch({
+  //   type: USER_LIST_RESET,
+  // });
+};
 
 export const getClientDetailsAction = () => async (dispatch, getState) => {
   try {
@@ -166,7 +212,6 @@ export const createClientAction = () => async (dispatch, getState) => {
       type: CLIENT_CREATE_SUCCESS,
       payload: data,
     });
-    
   } catch (error) {
     dispatch({
       type: CLIENT_CREATE_FAIL,

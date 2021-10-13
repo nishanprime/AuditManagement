@@ -7,6 +7,7 @@ import Loader from "../components/Loader";
 import FormContainer from "../components/FormContainer";
 import axios from "axios";
 import {
+  CLIENT_SINGLE_DETAILS_RESET,
   CLIENT_UPDATE_PROFILE_RESET,
   CLIENT_UPDATE_RESET,
 } from "../constants/clientConstants";
@@ -72,6 +73,7 @@ const ClinetEditScreen = ({ match, history }) => {
     dispatch({ type: USER_CREATE_RESET });
 
     if (successUpdate) {
+      dispatch({ type: CLIENT_SINGLE_DETAILS_RESET });
       dispatch({ type: CLIENT_UPDATE_PROFILE_RESET });
       history.push("/admin/clientlist");
     } else {

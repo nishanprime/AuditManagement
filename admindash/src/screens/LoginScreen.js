@@ -5,6 +5,7 @@ import { adminLogin } from "../actions/userActions";
 import Message from "../components/Message";
 import Loader from "../components/Loader";
 import { Col, Form, Row } from "react-bootstrap";
+import { clientLoginAction } from "../actions/clientAction";
 
 const LoginScreen = ({ location, history }) => {
   const [email, setEmail] = useState("");
@@ -25,18 +26,29 @@ const LoginScreen = ({ location, history }) => {
       if (isAdmin) {
         dispatch(adminLogin(email, password));
       } else if (isClient) {
-        
+        dispatch(clientLoginAction(email, password));
       }
       setSubmitError("");
     }
   };
   const userLogin = useSelector((state) => state.userLogin);
   const { loading, userInfo, error } = userLogin;
+
+  const clientLogin = useSelector((state) => state.clientLogin);
+  const {
+    loading: clientLoginLoading,
+    clientInfo,
+    clientLoginError,
+  } = clientLogin;
+
   useEffect(() => {
     if (userInfo) {
       history.push(redirect);
     }
-  }, [history, userInfo, redirect]);
+    if (clientInfo) {
+      history.push("/clientdashboard");
+    }
+  }, [history, userInfo, redirect, clientInfo]);
 
   return (
     <div>
