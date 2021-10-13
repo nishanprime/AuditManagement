@@ -35,12 +35,12 @@ const AuditorScreen = ({ history, match }) => {
   ) : (
     <div className="content-wrapper">
       My assigned Clients:
-      {clients.filter((client) => client.user === currentAuditId).length ===
+      {clients.filter((client) => client.user._id === currentAuditId).length ===
       0 ? (
         <Message variant="info">No Clients</Message>
       ) : (
         clients
-          .filter((client) => client.user === currentAuditId)
+          .filter((client) => client.user._id === currentAuditId)
           .map((req) => (
             <div>
               <h1>{req.name}</h1>

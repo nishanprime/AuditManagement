@@ -49,6 +49,7 @@ const Table = ({ clients }) => {
                 <th>Registration Number</th>
                 <th>Joined Date</th>
                 <th>Updated Date</th>
+                <th>Assigned Auditor</th>
                 <th>Edit/Delete</th>
               </tr>
             </thead>
@@ -75,6 +76,11 @@ const Table = ({ clients }) => {
                       <td>{client.registrationNumber}</td>
                       <td>{client.createdAt.substring(0, 10)}</td>
                       <td>{client.updatedAt.substring(0, 10)}</td>
+                      <td>
+                        <Link to={`/master/auditors/${client.user._id}/info`}>
+                          {client.user.name}
+                        </Link>
+                      </td>
                       <td>
                         <div
                           style={{
