@@ -51,14 +51,14 @@ const ClientScreen = ({ location, history, match }) => {
     }
   }, [dispatch, history, client, clientMongoId, userInfo]);
   return (
-    <div>
+    <div className="content-wrapper">
       {loading ? (
         <Loader />
       ) : error ? (
         <Message variant="danger">{error}</Message>
       ) : (
         <div>
-          <div className="content-wrapper">
+          <div>
             {/* <!-- Content Header (Page header) --> */}
             <section className="content-header">
               <div className="container-fluid">
@@ -132,18 +132,25 @@ const ClientScreen = ({ location, history, match }) => {
                                 client.updatedAt.substring(0, 10)}
                             </div>
                           </li>
-                          <li className="list-group-item">
-                            <b>My Auditor</b>{" "}
-                            <div className="float-right">
-                              {client.user.name && client.user.name}
-                            </div>
-                          </li>
-                          <li className="list-group-item">
-                            <b>My Auditor's Email</b>{" "}
-                            <a className="float-right" href={`mailto:${client.user.email}`}>
-                              {client.user.email && client.user.email}{" "}
-                            </a>
-                          </li>
+                          {user.name && (
+                            <li className="list-group-item">
+                              <b>My Auditor</b>{" "}
+                              <div className="float-right">
+                                {user.name && user.name}
+                              </div>
+                            </li>
+                          )}
+                          {user.email && (
+                            <li className="list-group-item">
+                              <b>My Auditor's Email</b>{" "}
+                              <a
+                                className="float-right"
+                                href={`mailto:${user.email}`}
+                              >
+                                {user.email && user.email}
+                              </a>
+                            </li>
+                          )}
                         </ul>
                       </div>
                       {/* <!-- /.card-body --> */}

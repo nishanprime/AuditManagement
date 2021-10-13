@@ -40,7 +40,7 @@ export const createClient = asyncHandler(async (req, res) => {
           "://" +
           req.get("host") +
           "/uploads/" +
-          "sampleImage2021oct8.jpeg",
+          "sampleImage---|---1634111191543.jpeg",
       ],
     });
 
@@ -60,7 +60,7 @@ export const createClient = asyncHandler(async (req, res) => {
           "://" +
           req.get("host") +
           "/uploads/" +
-          "sampleImage2021oct8.jpeg",
+          "sampleImage---|---1634111191543.jpeg",
       ],
       clientId: createdClient.clientId,
     });
@@ -124,7 +124,7 @@ export const clientDelete = asyncHandler(async (req, res) => {
       });
       const updateImagesPath = imagesPath.filter((imageP) => {
         imageP.split("/")[imageP.split("/").length - 1] !==
-          "sampleImage2021oct8.jpeg";
+          "sampleImage---|---1634111191543.jpeg";
       });
       updateImagesPath.map((imageP) => {
         fs.unlink(imageP, (err) => {
@@ -153,7 +153,7 @@ export const fetchClients = asyncHandler(async (req, res) => {
 
 export const getClientDetails = asyncHandler(async (req, res) => {
   const client = await ClientModel.findById(req.params.id).populate("user","name email");
-  if (client) {
+  if (client &&  client.user.name) {
     res.json(client);
   } else {
     res.status(404);

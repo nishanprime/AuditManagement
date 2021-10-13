@@ -57,7 +57,7 @@ const Dashboard = ({ auditors }) => {
                 footerIcon="fas fa-arrow-circle-right"
                 color=""
                 bodyIcon={"ion ion-android-clipboard"}
-                link="/auditfiles"
+                link="/admin/auditfiles"
               />
               <CardSection
                 header="_"

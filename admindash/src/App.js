@@ -15,13 +15,14 @@ import Sidebar from "./components/Sidebar";
 import website from "./components/website";
 import ClientDashboard from "./screens/ClientDashboard";
 import AuditorScreen from "./screens/AuditorScreen";
+import AuditFilesInfo from "./screens/AuditFilesInfo";
 const App = () => {
   const userLogin = useSelector((state) => state.userLogin);
   const { userInfo } = userLogin;
   return (
     <>
       <Router>
-        <Route path="/" component={website} exact/>
+        <Route path="/" component={website} exact />
         {userInfo && userInfo.isAdmin && <Header />}
         {userInfo && userInfo.isAdmin && <Sidebar />}
         <div>
@@ -36,6 +37,7 @@ const App = () => {
           <Route path="/admin/clients/:id/info" component={ClientScreen} />
           <Route path="/clientdashboard" component={ClientDashboard} />
           <Route path="/master/auditors/:id/info" component={AuditorScreen} />
+          <Route path="/admin/auditfiles" component={AuditFilesInfo} />
         </div>
         {userInfo && userInfo.isAdmin && <Footer />}
       </Router>

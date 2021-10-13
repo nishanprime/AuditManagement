@@ -57,6 +57,7 @@ const AdminPanel = ({ location, history }) => {
     } else {
       if (userInfo && userInfo.isAdmin) {
         dispatch(getAuditorsAction());
+        dispatch(getClientDetailsAction())
       }
     }
   }, [
