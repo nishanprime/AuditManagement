@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { Button } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
+import { getClientDetailsAction } from "../../actions/clientAction";
 import Table from "./AuditorListTable";
 import Breadcrumbs from "./Breadcrumbs";
 import CardSection from "./CardSection";
@@ -15,7 +16,20 @@ const Dashboard = ({ auditors }) => {
     success: auditorDeleteSuccess,
   } = auditorDelete;
 
-  useEffect(() => {}, [auditorDeleteSuccess]);
+  const clientDetails = useSelector((state) => state.clientDetails);
+  const { clients } = clientDetails;
+
+  const totalAudits = clients
+    .map((client) => client.images.length)
+    .reduce((acc, curVal) => {
+      return acc + curVal;
+    }, 0);
+
+  useEffect(() => {
+    if (!clients) {
+      dispatch(getClientDetailsAction());
+    }
+  }, [auditorDeleteSuccess, dispatch]);
 
   return (
     <div>
@@ -26,7 +40,7 @@ const Dashboard = ({ auditors }) => {
           <div className="container-fluid">
             <div className="row">
               <CardSection
-                header="150"
+                header={clients.length}
                 boxProperty={"small-box bg-info"}
                 body="Total Clients"
                 footer="More Info"
@@ -36,7 +50,7 @@ const Dashboard = ({ auditors }) => {
                 link="/admin/clientlist"
               />
               <CardSection
-                header="150"
+                header={totalAudits}
                 boxProperty={"small-box bg-warning"}
                 body="Audit Uploads"
                 footer="More Info"

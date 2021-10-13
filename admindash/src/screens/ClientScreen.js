@@ -29,7 +29,6 @@ const ClientScreen = ({ location, history, match }) => {
 
   const userLogin = useSelector((state) => state.userLogin);
   const { userInfo } = userLogin;
-
   useEffect(() => {
     if (!userInfo || !userInfo.isAdmin) {
       history.push("/login");
@@ -107,35 +106,43 @@ const ClientScreen = ({ location, history, match }) => {
                         <ul className="list-group list-group-unbordered mb-3">
                           <li className="list-group-item">
                             <b>Email</b>{" "}
-                            <Link to="#" className="float-right">
-                              {client.email}
-                            </Link>
+                            <div className="float-right">{client.email}</div>
                           </li>
                           <li className="list-group-item">
                             <b>Phone Number</b>{" "}
-                            <Link to="#" className="float-right">
-                              {client.phone}
-                            </Link>
+                            <div className="float-right">{client.phone}</div>
                           </li>
                           <li className="list-group-item">
                             <b>Registration Number(PAN)</b>{" "}
-                            <Link to="#" className="float-right">
+                            <div className="float-right">
                               {client.registrationNumber}
-                            </Link>
+                            </div>
                           </li>
                           <li className="list-group-item">
                             <b>Subscription Date</b>{" "}
-                            <Link to="#" className="float-right">
+                            <div className="float-right">
                               {client.createdAt &&
                                 client.createdAt.substring(0, 10)}
-                            </Link>
+                            </div>
                           </li>
                           <li className="list-group-item">
                             <b>Last Updated</b>{" "}
-                            <Link to="#" className="float-right">
+                            <div className="float-right">
                               {client.updatedAt &&
                                 client.updatedAt.substring(0, 10)}
-                            </Link>
+                            </div>
+                          </li>
+                          <li className="list-group-item">
+                            <b>My Auditor</b>{" "}
+                            <div className="float-right">
+                              {client.user.name && client.user.name}
+                            </div>
+                          </li>
+                          <li className="list-group-item">
+                            <b>My Auditor's Email</b>{" "}
+                            <a className="float-right" href={`mailto:${client.user.email}`}>
+                              {client.user.email && client.user.email}{" "}
+                            </a>
                           </li>
                         </ul>
                       </div>
@@ -143,8 +150,7 @@ const ClientScreen = ({ location, history, match }) => {
                     </div>
                     {/* <!-- /.card --> */}
 
-              
-                        {/* <!-- About Me Box --> */}
+                    {/* <!-- About Me Box --> */}
                     <div className="card card-primary col-md-4">
                       <div className="card-header">
                         <h3 className="card-title">About Client</h3>
@@ -155,9 +161,7 @@ const ClientScreen = ({ location, history, match }) => {
                           <i className="fas fa-book mr-1"></i> Address
                         </strong>
 
-                        <p className="text-muted">
-                          {client.address}
-                        </p>
+                        <p className="text-muted">{client.address}</p>
 
                         <hr />
 
@@ -181,9 +185,7 @@ const ClientScreen = ({ location, history, match }) => {
                       </div>
                       {/* <!-- /.card-body --> */}
                     </div>
-                        {/* <!-- /.card --> */}
-                  
-
+                    {/* <!-- /.card --> */}
                   </div>
                 </div>
                 {/* <!-- /.row --> */}

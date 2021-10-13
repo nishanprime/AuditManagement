@@ -152,7 +152,7 @@ export const fetchClients = asyncHandler(async (req, res) => {
 });
 
 export const getClientDetails = asyncHandler(async (req, res) => {
-  const client = await ClientModel.findById(req.params.id);
+  const client = await ClientModel.findById(req.params.id).populate("user","name email");
   if (client) {
     res.json(client);
   } else {
