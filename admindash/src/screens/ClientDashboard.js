@@ -83,38 +83,126 @@ const ClientDashboard = ({ history }) => {
                   <Nav.Link href="#auditFiles">My Audit Files</Nav.Link>
 
                   {clientInfo && (
-                    <NavDropdown title={clientInfo.name} id="basic-nav-dropdown">
+                    <NavDropdown
+                      title={clientInfo.name}
+                      id="basic-nav-dropdown"
+                    >
+                      {/* Think of something we could add here */}
                       <NavDropdown.Item href="#action/3.1">
                         Action
                       </NavDropdown.Item>
                       <NavDropdown.Item onClick={logoutHandler}>
                         Log Out
                       </NavDropdown.Item>
-                    
                     </NavDropdown>
                   )}
                 </Nav>
               </Navbar.Collapse>
             </Container>
           </Navbar>
-          <div style={{ padding: "1rem" }}></div>
-          <h1>This is clientDashboard</h1>
-          <h1>ClientId: {clientInfo.clientId}</h1>
-          <h1>Name: {clientInfo.name}</h1>
-          <h1>Email: {clientInfo.email}</h1>
-          <h1>Profile Pic:</h1>
-          <img
-            src={clientInfo.dp}
-            alt="Girl in a jacket"
-            width="500"
-            height="600"
-          ></img>
-          <h1>Address: {clientInfo.address}</h1>
-          <h2>Phone: {clientInfo.phone}</h2>
-          <h2>Registration Number (PAN): {clientInfo.registrationNumber}</h2>
-          <h2 id="auditFiles">Audit Files: </h2>
-          <Row>
-            {clientInfo.images.reverse().map((image) => {
+
+          <Container style={{ marginTop: "100px" }}>
+            <div class="container d-flex justify-content-center align-items-center">
+              <div class="card">
+                <div class="user text-center">
+                  <div class="profile mt-2">
+                    <Image src={clientInfo.dp} thumbnail fluid width="100" />
+                  </div>
+                </div>
+                <div class="text-center px-4 pb-4">
+                  <h4 class="mb-0">{clientInfo.name}</h4>{" "}
+                  <span class="text-muted d-block mb-1">
+                    Client Id: {clientInfo.clientId}
+                  </span>{" "}
+                  <span class="text-muted d-block mb-1">
+                    Registration Number (PAN): {clientInfo.registrationNumber}
+                  </span>{" "}
+                  <span class="text-muted d-block mb-1">
+                    Email: {clientInfo.email}
+                  </span>
+                  <span class="text-muted d-block mb-1">
+                    Phone: {clientInfo.phone}
+                  </span>
+                  <span class="text-muted d-block mb-2">
+                    {clientInfo.address}
+                  </span>
+                  <hr />
+                  <span class="text-muted d-block mb-2">
+                    Assigned Auditor: {clientInfo.user.name}
+                  </span>
+                  <span class="text-muted d-block mb-2">
+                    Assigned Auditor's email:{" "}
+                    <a href={`mailto:${clientInfo.user.email}`}>
+                      {clientInfo.user.email}
+                    </a>
+                  </span>
+                  <div class="d-flex justify-content-between align-items-center mt-4 px-4">
+                    <div class="stats">
+                      <a href="#auditFiles" style={{ color: "black" }}>
+                        <h6 class="mb-0">Total Audits</h6>{" "}
+                        <span>{clientInfo.images.length}</span>
+                      </a>
+                    </div>
+                    <div class="stats">
+                      <h6 class="mb-0 ml-3">Account Created</h6>{" "}
+                      <span>{clientInfo.createdAt.substring(0, 10)}</span>
+                    </div>
+                    <div class="stats">
+                      <h6 class="mb-0 ml-3">Last Updated</h6>{" "}
+                      <span>{clientInfo.updatedAt.substring(0, 10)}</span>
+                    </div>
+                  </div>
+                  {/* Modal popup to send email to assigned auditor regarding auditfiles or editing personal details */}
+                  <Button
+                    className="btn btn-dark"
+                    style={{ marginTop: "10px" }}
+                  >
+                    Send Message To Auditor
+                  </Button>
+                </div>
+              </div>
+            </div>
+          </Container>
+          <Container id="auditFiles">
+            <h1>Audited Files</h1>
+          </Container>
+          <Container>
+            <Row>
+              {clientInfo.images.length === 0 ? (
+                <Message variant="info">No Pending Audits</Message>
+              ) : (
+                clientInfo.images.reverse().map((image) => {
+                  const uploadedDate = new Date(
+                    parseInt(image.split("---|---")[1].split(".")[0])
+                  ).toLocaleString();
+                  const fileName = image
+                    .split("/")
+                    [image.split("/").length - 1].split("---|---")[0]
+                    .split(".")[0];
+                  console.log(image);
+                  return (
+                    <Col sm={4} md={3} xl={2} xs={6}>
+                      <AuditFIleViewComponent
+                        image={
+                          "https://image.flaticon.com/icons/png/512/456/456700.png"
+                        }
+                        download={image}
+                        name={fileName}
+                        date={uploadedDate}
+                      />
+                    </Col>
+                  );
+                })
+              )}
+            </Row>
+          </Container>
+          <Container id="pendingAudits">
+            <h1>Pending Audits</h1>
+          </Container>
+          <Container>
+            <Row>
+              <Message variant="info">No Pending Audits</Message>
+              {/* {clientInfo.images.reverse().map((image) => {
               const uploadedDate = new Date(
                 parseInt(image.split("---|---")[1].split(".")[0])
               ).toLocaleString();
@@ -130,21 +218,9 @@ const ClientDashboard = ({ history }) => {
                   />
                 </Col>
               );
-            })}
-          </Row>
-
-          <h2>Created At: {clientInfo.createdAt.substring(0, 10)}</h2>
-          <h2>Updated At: {clientInfo.updatedAt.substring(0, 10)}</h2>
-          <br />
-          <h1>Assigned Auditor: {clientInfo.user.name}</h1>
-          <h1>Assigned Auditor's Email: {clientInfo.user.email}</h1>
-          <h1>Assigned Auditor's Picture:</h1>
-          <img
-            src={clientInfo.user.dp}
-            alt="Girl in a jacket"
-            width="500"
-            height="600"
-          ></img>
+            })} */}
+            </Row>
+          </Container>
         </div>
       ) : null}
     </div>
