@@ -4,6 +4,7 @@ import { getClientDetailsAction } from '../actions/clientAction';
 import Loader from '../components/Loader';
 import Message from '../components/Message';
 import Breadcrumbs from '../components/dashboard/Breadcrumbs';
+import { Button } from 'react-bootstrap';
 const AuditorScreen = ({ history, match }) => {
 	const currentAuditId = match.params.id;
 	console.log(currentAuditId);
@@ -43,12 +44,28 @@ const AuditorScreen = ({ history, match }) => {
 				clients
 					.filter((client) => client.user._id === currentAuditId)
 					.map((req) => (
-						<div>
-							<h1>{req.name}</h1>
-							<h1>{req.email}</h1>
-							<h1>{req.clientId}</h1>
-							<h1>---------------</h1>
-							<br />
+						<div className="card">
+							<div className="card-body" style={{ overflowX: 'auto' }}>
+								<table
+									id="example1"
+									className="table table-bordered table-striped"
+								>
+									<thead>
+										<tr>
+											<th>Client ID</th>
+											<th>Name</th>
+											<th>Email</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr>
+											<td>{req.clientId}</td>
+											<td>{req.name}</td>
+											<td>{req.email}</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
 						</div>
 					))
 			)}

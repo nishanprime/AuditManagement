@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getClientDetailsAction } from '../actions/clientAction';
 import Table from '../components/dashboard/AuditorListTable';
 import Breadcrumbs from '../components/dashboard/Breadcrumbs';
+import Message from '../components/Message';
 
 const Auditors = ({ auditors }) => {
 	const dispatch = useDispatch();
@@ -28,23 +29,7 @@ const Auditors = ({ auditors }) => {
 		<>
 			<div className="content-wrapper">
 				<Breadcrumbs page="Auditors" />
-				{/* Main content */}
-				<section className="content">
-					<div className="container-fluid">
-						{/* Main row */}
-						{loading ? (
-							<Loader />
-						) : error ? (
-							<Message variant="danger">{error}</Message>
-						) : (
-							auditors && <Table auditors={auditors} />
-						)}
-
-						{/* /.row (main row) */}
-					</div>
-					{/* /.container-fluid */}
-				</section>
-				{/* /.content */}
+				{auditors && <Table auditors={auditors} />}
 			</div>
 		</>
 	);
