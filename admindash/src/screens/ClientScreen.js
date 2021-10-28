@@ -157,7 +157,8 @@ const ClientScreen = ({ location, history, match }) => {
                     </div>
                     {/* <!-- /.card --> */}
 
-                    {/* <!-- About Me Box --> */}
+                        {/* <!-- About Me Box --> */}
+                        <div className="row">
                     <div className="card card-primary col-md-4">
                       <div className="card-header">
                         <h3 className="card-title">About Client</h3>
@@ -189,6 +190,41 @@ const ClientScreen = ({ location, history, match }) => {
                           Lorem ipsum dolor sit amet, consectetur adipiscing
                           elit. Etiam fermentum enim neque.
                         </p>
+                      </div>
+                      {/* <!-- /.card-body --> */}
+                        </div>
+                        <div className="card card-primary col-md-4 ml-2">
+                      <div className="card-header">
+                        <h3 className="card-title">About Client</h3>
+                      </div>
+                      {/* <!-- /.card-header --> */}
+                      <div className="card-body">
+                        <strong>
+                          <i className="fas fa-book mr-1"></i> Address
+                        </strong>
+
+                        <p className="text-muted">{client.address}</p>
+
+                        <hr />
+
+                        <strong>
+                          <i className="fas fa-map-marker-alt mr-1"></i>{" "}
+                          Location
+                        </strong>
+
+                        <p className="text-muted">Nepal</p>
+
+                        <hr />
+
+                        <strong>
+                          <i className="far fa-file-alt mr-1"></i> Notes
+                        </strong>
+
+                        <p className="text-muted">
+                          Lorem ipsum dolor sit amet, consectetur adipiscing
+                          elit. Etiam fermentum enim neque.
+                        </p>
+                      </div>
                       </div>
                       {/* <!-- /.card-body --> */}
                     </div>
