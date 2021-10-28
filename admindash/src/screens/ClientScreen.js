@@ -193,37 +193,60 @@ const ClientScreen = ({ location, history, match }) => {
                       </div>
                       {/* <!-- /.card-body --> */}
                         </div>
-                        <div className="card card-primary col-md-4 ml-2">
+                        <div className="card card-primary col-md-8 ml-6">
                       <div className="card-header">
-                        <h3 className="card-title">About Client</h3>
+                        <h3 className="card-title">Audits</h3>
                       </div>
                       {/* <!-- /.card-header --> */}
                       <div className="card-body">
-                        <strong>
-                          <i className="fas fa-book mr-1"></i> Address
-                        </strong>
-
-                        <p className="text-muted">{client.address}</p>
-
-                        <hr />
-
-                        <strong>
-                          <i className="fas fa-map-marker-alt mr-1"></i>{" "}
-                          Location
-                        </strong>
-
-                        <p className="text-muted">Nepal</p>
-
-                        <hr />
-
-                        <strong>
-                          <i className="far fa-file-alt mr-1"></i> Notes
-                        </strong>
-
-                        <p className="text-muted">
-                          Lorem ipsum dolor sit amet, consectetur adipiscing
-                          elit. Etiam fermentum enim neque.
-                        </p>
+                        {/* <!-- /.card-header --> */}
+				<Table
+												striped
+												bordered
+												hover
+												responsive
+												className="table-sm"
+											>
+												<thead>
+													<tr>
+														<th>File Name</th>
+														<th>Uploaded Data</th>
+														<th>Download</th>
+													</tr>
+												</thead>
+												<tbody>
+													{client.images.map((auditFile) => {
+														const fileName = auditFile
+															.split('/')
+															[auditFile.split('/').length - 1].split(
+																'---|---'
+															)[0];
+														const date = auditFile
+															.split('/')
+															[auditFile.split('/').length - 1].split(
+																'---|---'
+															)[1];
+														return (
+															<tr key="key">
+																<td>File Name</td>
+																<td>
+																	a
+																</td>
+																<td>
+																	<a
+																		href="#filepath"
+																		target="_blank"
+																		rel="noreferrer"
+																	>
+																		<i className="fas fa-download"></i>
+																	</a>
+																</td>
+															</tr>
+														);
+													})}
+												</tbody>
+											</Table>
+				{/* <!-- /.card-body --> */}
                       </div>
                       </div>
                       {/* <!-- /.card-body --> */}
