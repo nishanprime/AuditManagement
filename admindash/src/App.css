@@ -1,3 +1,17 @@
 /* :focus{
     background-color: transparent!important;
 } */
+
+
+/* 
+.attached-toggler{
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    right: -100px;
+        top: 3px;
+    z-index: 10000;
+        text-align: center;
+        color: blue;
+        background-color: white;
+} */

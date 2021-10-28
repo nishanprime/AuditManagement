@@ -24,7 +24,7 @@ const Table = ({ auditors }) => {
 					className="card-header"
 					style={{ justifyContent: 'space-between', display: 'flex' }}
 				>
-					<h2 className="card-title">Auditors</h2>
+					{/* <h2 className="card-title">Auditors</h2> */}
 					{/* <Button className="btn btn-dark" onClick={createAuditorHandler}>
             Create Auditor
           </Button> */}

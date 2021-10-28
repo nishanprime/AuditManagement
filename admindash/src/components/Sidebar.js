@@ -1,13 +1,20 @@
 import React, { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
+import $ from 'jquery';
 const Sidebar = ({ history }) => {
+
+
+$(".content-wrapper").on('click', function(event) {
+	if ($(".sidebar-mini").hasClass("sidebar-open")) {
+		$(".sidebar-mini").removeClass("sidebar-open")
+	}
+});
+	
+
+
 	const userLogin = useSelector((state) => state.userLogin);
 	const { loading, userInfo, error } = userLogin;
-
-	//   $(document).ready(funtion() {
-	//     $('body').Layout();
-	// })
 
 	useEffect(() => {
 		if (!userInfo || !userInfo.name) {
@@ -17,7 +24,7 @@ const Sidebar = ({ history }) => {
 	return (
 		userInfo && (
 			<>
-				<aside className="main-sidebar sidebar-dark-primary elevation-4">
+				<aside className="main-sidebar pushmenu sidebar-dark-primary elevation-4" id="control-sidebar">
 					{/* Brand Logo */}
 					<Link to="/dashboard" className="brand-link">
 						<img
@@ -29,6 +36,14 @@ const Sidebar = ({ history }) => {
 						<span className="brand-text font-weight-light">
 							Saurya Auditors
 						</span>
+						{/* <Link
+						className="nav-link attached-toggler"
+						data-widget="pushmenu"
+						to="#"
+						role="button"
+					>
+						<i className="fas fa-bars"></i>
+					</Link> */}
 					</Link>
 					{/* Sidebar */}
 					<div className="sidebar">

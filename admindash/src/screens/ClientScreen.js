@@ -195,12 +195,28 @@ const ClientScreen = ({ location, history, match }) => {
                         </div>
                         <div className="card card-primary col-md-8 ml-6">
                       <div className="card-header">
-                        <h3 className="card-title">Audits</h3>
+                        <h3 className="card-title">Messages</h3>
                       </div>
                       {/* <!-- /.card-header --> */}
                       <div className="card-body">
                         {/* <!-- /.card-header --> */}
-				<Table
+				
+				{/* <!-- /.card-body --> */}
+                      </div>
+                      </div>
+                      {/* <!-- /.card-body --> */}
+                    </div>
+                        {/* <!-- /.card --> */}
+                        
+
+                        {/* Messages */}
+                        <div className="card card-primary col-md-12">
+                      <div className="card-header">
+                        <h3 className="card-title">Audit Reports</h3>
+                      </div>
+                      {/* <!-- /.card-header --> */}
+                      <div className="card-body">
+                        <Table
 												striped
 												bordered
 												hover
@@ -235,12 +251,10 @@ const ClientScreen = ({ location, history, match }) => {
                                   
 												</tbody>
 											</Table>
-				{/* <!-- /.card-body --> */}
-                      </div>
                       </div>
                       {/* <!-- /.card-body --> */}
-                    </div>
-                    {/* <!-- /.card --> */}
+                        </div>
+                        {/* End Messages */}
                   </div>
                 </div>
                 {/* <!-- /.row --> */}
