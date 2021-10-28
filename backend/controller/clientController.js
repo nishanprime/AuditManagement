@@ -21,7 +21,6 @@ export const authClient = asyncHandler(async (req, res) => {
   }
 });
 
-
 export const createClient = asyncHandler(async (req, res) => {
   const User = await UserModel.findById(req.user._id);
   if (User) {
@@ -67,6 +66,30 @@ export const createClient = asyncHandler(async (req, res) => {
   } else {
     res.status(404);
     throw new Error("No user found");
+  }
+});
+
+export const addMessage = asyncHandler(async (req, res) => {
+  console.log(req.body)
+
+  const { message } = req.body;
+  const client = await ClientModel.findById(req.params.id);
+  if (client && message) {
+    client.messageToAuditor.push(message);
+    const updatedClient = await client.save();
+
+    if (updatedClient) {
+      const fetchingUpdatedClient = await ClientModel.findById(
+        updatedClient._id
+      );
+      res.json(fetchingUpdatedClient);
+    } else {
+      res.status(404);
+      throw new Error("Client not found: Some error occurred");
+    }
+  } else {
+    res.status(404);
+    throw new Error("Client not found");
   }
 });
 
@@ -147,14 +170,17 @@ export const clientDelete = asyncHandler(async (req, res) => {
 });
 
 export const fetchClients = asyncHandler(async (req, res) => {
-  const clients = await ClientModel.find({}).populate("user","name email");
-  console.log(clients)
+  const clients = await ClientModel.find({}).populate("user", "name email");
+  console.log(clients);
   res.json(clients);
 });
 
 export const getClientDetails = asyncHandler(async (req, res) => {
-  const client = await ClientModel.findById(req.params.id).populate("user","name email");
-  if (client &&  client.user.name) {
+  const client = await ClientModel.findById(req.params.id).populate(
+    "user",
+    "name email"
+  );
+  if (client && client.user.name) {
     res.json(client);
   } else {
     res.status(404);

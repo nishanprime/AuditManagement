@@ -44,6 +44,11 @@ const clientSchema = mongoose.Schema(
       type: String,
       required: true,
     },
+    messageToAuditor: [
+      {
+        type: String,
+      },
+    ],
     images: [
       {
         type: String,

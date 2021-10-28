@@ -1,5 +1,6 @@
 import express from "express";
 import {
+  addMessage,
   authClient,
   clientDelete,
   createClient,
@@ -14,12 +15,11 @@ const router = express.Router();
 
 router.route("/login").post(authClient);
 
-
-
 router
   .route("/")
   .post(protect, isAdmin, createClient)
   .get(protect, isAdmin, fetchClients);
+router.route("/:id/message").put(protect, addMessage);
 router
   .route("/:id")
   .put(protect, isAdmin, updateClient)

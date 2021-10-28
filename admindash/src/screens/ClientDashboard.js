@@ -36,7 +36,7 @@ const ClientDashboard = ({ history }) => {
   // const [dp, setDp]=useState("")
 
   const [show, setShow] = useState(false);
-  const [message, setMessage] = useState("jnj");
+  const [message, setMessage] = useState("");
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
@@ -173,7 +173,7 @@ const ClientDashboard = ({ history }) => {
                     <Form
                       onSubmit={(e) => {
                         e.preventDefault();
-                        console.log(message);
+                        
                         setMessage("")
                         handleClose();
                       }}
