@@ -7,7 +7,11 @@ import {
   Button,
   Col,
   Container,
+  Form,
+  FormControl,
   Image,
+  InputGroup,
+  Modal,
   Nav,
   Navbar,
   NavDropdown,
@@ -30,6 +34,11 @@ const ClientDashboard = ({ history }) => {
   // const [dp, setDp]=useState("")
   // const [dp, setDp]=useState("")
   // const [dp, setDp]=useState("")
+
+  const [show, setShow] = useState(false);
+  const [message, setMessage] = useState("jnj");
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
 
   const clientLogin = useSelector((state) => state.clientLogin);
   const { loading, error, clientInfo } = clientLogin;
@@ -154,11 +163,48 @@ const ClientDashboard = ({ history }) => {
                   </div>
                   {/* Modal popup to send email to assigned auditor regarding auditfiles or editing personal details */}
                   <Button
-                    className="btn btn-dark"
+                    variant="dark"
                     style={{ marginTop: "10px" }}
+                    onClick={handleShow}
                   >
                     Send Message To Auditor
                   </Button>
+                  <Modal show={show} onHide={handleClose} animation={false}>
+                    <Form
+                      onSubmit={(e) => {
+                        e.preventDefault();
+                        console.log(message);
+                        setMessage("")
+                        handleClose();
+                      }}
+                    >
+                      <Modal.Header closeButton>
+                        <Modal.Title>Any request? Let us know</Modal.Title>
+                      </Modal.Header>
+                      <Modal.Body>
+                        <InputGroup>
+                          <FormControl
+                            as="textarea"
+                            aria-label="Your requests here"
+                            value={message}
+                            onChange={(e)=>setMessage(e.target.value)}
+                          ></FormControl>
+                        </InputGroup>
+                      </Modal.Body>
+                      <Modal.Footer>
+                        <Button variant="secondary" onClick={handleClose}>
+                          Close
+                        </Button>
+                        <Button
+                          type="submit"
+                          variant="primary"
+                          onClick={() => {}}
+                        >
+                          Send
+                        </Button>
+                      </Modal.Footer>
+                    </Form>
+                  </Modal>
                 </div>
               </div>
             </div>
