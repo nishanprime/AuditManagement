@@ -61,13 +61,23 @@ const Dashboard = ({ auditors }) => {
               />
               <CardSection
                 header="_"
+                boxProperty={"small-box bg-success"}
+                body="Total Auditors"
+                footer="More Info"
+                footerIcon="fas fa-arrow-circle-right"
+                color=""
+                bodyIcon={"ion ion-android-people"}
+                link="/auditors"
+              />
+              <CardSection
+                header="_"
                 boxProperty={"small-box bg-danger"}
                 body="Client Messages"
                 footer="More Info"
                 footerIcon="fas fa-arrow-circle-right"
                 color=""
                 bodyIcon={"ion ion-android-document"}
-                link="/clients"
+                link="#"
               />
             </div>
             {/* Main row */}

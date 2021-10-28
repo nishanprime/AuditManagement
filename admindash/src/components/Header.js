@@ -36,10 +36,8 @@ const Header = ({ history }) => {
 					</Link>
 				</Nav.Item>
 				<NavDropdown title="Help">
-					<NavDropdown.Item>FAQ</NavDropdown.Item>
-					<NavDropdown.Item>FAQ</NavDropdown.Item>
-					<NavDropdown.Item>FAQ</NavDropdown.Item>
-					<NavDropdown.Item>FAQ</NavDropdown.Item>
+					<NavDropdown.Item>Tutorial and Manual</NavDropdown.Item>
+					<NavDropdown.Item>Contact Us</NavDropdown.Item>
 				</NavDropdown>
 
 				{/* Make a search component and get it here */}
