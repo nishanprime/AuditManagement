@@ -9,7 +9,7 @@ import {
   updateClient,
 } from "../controller/clientController.js";
 import { authUser } from "../controller/userController.js";
-import { isAdmin, protect } from "../middleware/authMiddleware.js";
+import { clientProtect, isAdmin, protect } from "../middleware/authMiddleware.js";
 
 const router = express.Router();
 
@@ -19,7 +19,7 @@ router
   .route("/")
   .post(protect, isAdmin, createClient)
   .get(protect, isAdmin, fetchClients);
-router.route("/:id/message").put(protect, addMessage);
+router.route("/:id/message").put(clientProtect, addMessage);
 router
   .route("/:id")
   .put(protect, isAdmin, updateClient)

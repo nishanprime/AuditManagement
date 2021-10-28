@@ -5,6 +5,7 @@ import ClientModel from "../models/ClientModel.js";
 import UserModel from "../models/userModel.js";
 import path from "path";
 import fs from "fs";
+import { generateToken } from "../utils/generateToken.js";
 
 export const authClient = asyncHandler(async (req, res) => {
   const { email, password } = req.body;
@@ -14,7 +15,22 @@ export const authClient = asyncHandler(async (req, res) => {
   );
 
   if (client && (await client.matchPassword(password))) {
-    res.send(client);
+    res.json({
+      _id: client._id,
+      user: client.user,
+      dp: client.dp,
+      clientId: client.clientId,
+      name: client.name,
+      email: client.email,
+      address: client.address,
+      phone: client.phone,
+      registrationNumber: client.registrationNumber,
+      messageToAuditor: client.messageToAuditor,
+      images: client.images,
+      createdAt: client.createdAt,
+      updatedAt: client.updatedAt,
+      token: generateToken(client._id),
+    });
   } else {
     res.status(401);
     throw new Error("Invalid Credentials");
@@ -70,12 +86,10 @@ export const createClient = asyncHandler(async (req, res) => {
 });
 
 export const addMessage = asyncHandler(async (req, res) => {
-  console.log(req.body)
-
-  const { message } = req.body;
+  const { messageToSend } = req.body;
   const client = await ClientModel.findById(req.params.id);
-  if (client && message) {
-    client.messageToAuditor.push(message);
+  if (client && messageToSend) {
+    client.messageToAuditor.push(messageToSend);
     const updatedClient = await client.save();
 
     if (updatedClient) {
@@ -152,7 +166,6 @@ export const clientDelete = asyncHandler(async (req, res) => {
       updateImagesPath.map((imageP) => {
         fs.unlink(imageP, (err) => {
           if (err) {
-            console.error(err);
             throw new Error(err);
           }
         });
@@ -171,7 +184,6 @@ export const clientDelete = asyncHandler(async (req, res) => {
 
 export const fetchClients = asyncHandler(async (req, res) => {
   const clients = await ClientModel.find({}).populate("user", "name email");
-  console.log(clients);
   res.json(clients);
 });
 

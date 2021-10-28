@@ -14,6 +14,9 @@ import {
   CLIENT_LOGIN_REQUEST,
   CLIENT_LOGIN_SUCCESS,
   CLIENT_LOGOUT,
+  CLIENT_SEND_MESSAGE_FAIL,
+  CLIENT_SEND_MESSAGE_REQUEST,
+  CLIENT_SEND_MESSAGE_SUCCESS,
   CLIENT_SINGLE_DETAILS_FAIL,
   CLIENT_SINGLE_DETAILS_REQ,
   CLIENT_SINGLE_DETAILS_RESET,
@@ -109,6 +112,19 @@ export const clientLoginReducer = (state = {}, action) => {
       return { loading: false, error: action.payload };
     case CLIENT_LOGOUT:
       return { logoutSuccess: true };
+    default:
+      return state;
+  }
+};
+
+export const clientSendMessageReducer = (state = {}, action) => {
+  switch (action.type) {
+    case CLIENT_SEND_MESSAGE_REQUEST:
+      return { loading: true };
+    case CLIENT_SEND_MESSAGE_SUCCESS:
+      return { loading: false, sentMessage: action.payload };
+    case CLIENT_SEND_MESSAGE_FAIL:
+      return { loading: false, error: action.payload };
     default:
       return state;
   }

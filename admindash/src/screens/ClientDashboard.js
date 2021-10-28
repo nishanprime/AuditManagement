@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { clientLogoutAction } from "../actions/clientAction";
+import { clientLogoutAction, sendMessageAction } from "../actions/clientAction";
 import { LinkContainer } from "react-router-bootstrap";
 
 import {
@@ -173,8 +173,14 @@ const ClientDashboard = ({ history }) => {
                     <Form
                       onSubmit={(e) => {
                         e.preventDefault();
-                        
-                        setMessage("")
+                        if (message.length > 0) {
+                          let newMes =
+                            message + "---_---" + Date.now().toString();
+                          dispatch(
+                            sendMessageAction({ messageToSend: newMes })
+                          );
+                        }
+                        setMessage("");
                         handleClose();
                       }}
                     >
@@ -187,7 +193,7 @@ const ClientDashboard = ({ history }) => {
                             as="textarea"
                             aria-label="Your requests here"
                             value={message}
-                            onChange={(e)=>setMessage(e.target.value)}
+                            onChange={(e) => setMessage(e.target.value)}
                           ></FormControl>
                         </InputGroup>
                       </Modal.Body>

@@ -19,6 +19,9 @@ import {
   CLIENT_LOGIN_SUCCESS,
   CLIENT_LOGIN_FAIL,
   CLIENT_LOGOUT,
+  CLIENT_SEND_MESSAGE_REQUEST,
+  CLIENT_SEND_MESSAGE_SUCCESS,
+  CLIENT_SEND_MESSAGE_FAIL,
 } from "../constants/clientConstants";
 import axios from "axios";
 import { USER_LOGIN_SUCCESS } from "../constants/userConstants";
@@ -222,3 +225,39 @@ export const createClientAction = () => async (dispatch, getState) => {
     });
   }
 };
+
+export const sendMessageAction =
+  ({ messageToSend }) =>
+  async (dispatch, getState) => {
+    try {
+      dispatch({
+        type: CLIENT_SEND_MESSAGE_REQUEST,
+      });
+      const {
+        clientLogin: { clientInfo },
+      } = getState();
+      const config = {
+        headers: {
+          Authorization: `BearerClient ${clientInfo.token}`,
+        },
+      };
+
+      await axios.put(
+        `/api/clients/${clientInfo._id}/message`,
+        { messageToSend },
+        config
+      );
+      dispatch({
+        type: CLIENT_SEND_MESSAGE_SUCCESS,
+        payload: messageToSend,
+      });
+    } catch (error) {
+      dispatch({
+        type: CLIENT_SEND_MESSAGE_FAIL,
+        payload:
+          error.response && error.response.data.message
+            ? error.response.data.message
+            : error.message,
+      });
+    }
+  };

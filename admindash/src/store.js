@@ -14,6 +14,7 @@ import {
   clientDeleteReducer,
   clientDetailsReducer,
   clientLoginReducer,
+  clientSendMessageReducer,
   clientUpdateProfileReducer,
   singleClientDetailsReducer,
 } from "./reducers/clientReducer.js";
@@ -31,6 +32,7 @@ const reducer = combineReducers({
   auditorCreate: auditorCreateReducer,
   currentAuditorDetails: singleAuditorDetailReducer,
   auditorUpdate: auditorUpdateProfileReducer,
+  clientMessage: clientSendMessageReducer,
 });
 
 const userInfoFromStorage = localStorage.getItem("userInfo")
