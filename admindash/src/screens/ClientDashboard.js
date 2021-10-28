@@ -219,11 +219,11 @@ const ClientDashboard = ({ history }) => {
               ) : (
                 clientInfo.images.reverse().map((image) => {
                   const uploadedDate = new Date(
-                    parseInt(image.split("---|---")[1].split(".")[0])
+                    parseInt(image.split("---_---")[1].split(".")[0])
                   ).toLocaleString();
                   const fileName = image
                     .split("/")
-                    [image.split("/").length - 1].split("---|---")[0]
+                    [image.split("/").length - 1].split("---_---")[0]
                     .split(".")[0];
                   console.log(image);
                   return (

@@ -40,7 +40,7 @@ export const createClient = asyncHandler(async (req, res) => {
           "://" +
           req.get("host") +
           "/uploads/" +
-          "sampleImage---|---1634111191543.jpeg",
+          "sampleImage2983472938472398472374---_---1634111191543.jpeg",
       ],
     });
 
@@ -60,7 +60,7 @@ export const createClient = asyncHandler(async (req, res) => {
           "://" +
           req.get("host") +
           "/uploads/" +
-          "sampleImage---|---1634111191543.jpeg",
+          "sampleImage2983472938472398472374---_---1634111191543.jpeg",
       ],
       clientId: createdClient.clientId,
     });
@@ -124,7 +124,7 @@ export const clientDelete = asyncHandler(async (req, res) => {
       });
       const updateImagesPath = imagesPath.filter((imageP) => {
         imageP.split("/")[imageP.split("/").length - 1] !==
-          "sampleImage---|---1634111191543.jpeg";
+          "sampleImage2983472938472398472374---_---1634111191543.jpeg";
       });
       updateImagesPath.map((imageP) => {
         fs.unlink(imageP, (err) => {
