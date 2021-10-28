@@ -62,7 +62,7 @@ const Dashboard = ({ auditors }) => {
               <CardSection
                 header="_"
                 boxProperty={"small-box bg-danger"}
-                body="Pending Audits"
+                body="Client Messages"
                 footer="More Info"
                 footerIcon="fas fa-arrow-circle-right"
                 color=""
