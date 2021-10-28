@@ -25,9 +25,9 @@ const Table = ({ auditors }) => {
 					style={{ justifyContent: 'space-between', display: 'flex' }}
 				>
 					{/* <h2 className="card-title">Auditors</h2> */}
-					{/* <Button className="btn btn-dark" onClick={createAuditorHandler}>
+					<Button className="btn btn-dark">
             Create Auditor
-          </Button> */}
+          </Button>
 				</div>
 				{/* <!-- /.card-header --> */}
 				<div className="card-body" style={{ 'overflow-x': 'auto' }}>

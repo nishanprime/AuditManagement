@@ -36,14 +36,6 @@ $(".content-wrapper").on('click', function(event) {
 						<span className="brand-text font-weight-light">
 							Saurya Auditors
 						</span>
-						{/* <Link
-						className="nav-link attached-toggler"
-						data-widget="pushmenu"
-						to="#"
-						role="button"
-					>
-						<i className="fas fa-bars"></i>
-					</Link> */}
 					</Link>
 					{/* Sidebar */}
 					<div className="sidebar">
@@ -81,21 +73,32 @@ $(".content-wrapper").on('click', function(event) {
 								</li>
 								<li className="nav-item has-treeview">
 									<Link to="/admin/clientlist" className="nav-link">
-										<i className="nav-icon fas fa-chart-pie" />
+										<i className="nav-icon fas fa-user" />
 										<p>Clients</p>
 									</Link>
 								</li>
 								<li className="nav-item has-treeview">
 									<Link to="/admin/auditors" className="nav-link">
-										<i className="nav-icon fas fa-chart-pie" />
+										<i className="nav-icon fas fa-users" />
 										<p>Auditors</p>
 									</Link>
 								</li>
 								<li className="nav-item has-treeview">
 									<Link to="/admin/auditfiles" className="nav-link">
-										<i className="nav-icon fas fa-chart-pie" />
+										<i className="nav-icon fas fa-file" />
 										<p>Audit Reports</p>
 									</Link>
+								</li>
+								<li className="nav-item has-treeview d-xl-none d-lg-none">
+								<Link
+						className="nav-link attached-toggler"
+						data-widget="pushmenu"
+						to="#"
+						role="button"
+					>
+						<i className="nav-icon fas fa-arrow-left" />
+						<p>Toggle Sidebar</p>
+					</Link>
 								</li>
 							</ul>
 						</nav>
