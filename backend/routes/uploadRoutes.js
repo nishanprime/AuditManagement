@@ -12,7 +12,7 @@ const storage = multer.diskStorage({
   filename(req, file, cb) {
     cb(
       null,
-      `${file.originalname}---|---${Date.now()}${path.extname(file.originalname)}`
+      `${file.originalname}---_---${Date.now()}${path.extname(file.originalname)}`
       // `${file.fieldname}--chromakey${Date.now()}--${path.extname(file.originalname)}`
     );
   },
