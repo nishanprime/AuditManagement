@@ -148,6 +148,7 @@ export const clientDelete = asyncHandler(async (req, res) => {
 
 export const fetchClients = asyncHandler(async (req, res) => {
   const clients = await ClientModel.find({}).populate("user","name email");
+  console.log(clients)
   res.json(clients);
 });
 
