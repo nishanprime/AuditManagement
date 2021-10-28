@@ -215,18 +215,7 @@ const ClientScreen = ({ location, history, match }) => {
 													</tr>
 												</thead>
 												<tbody>
-													{client.images.map((auditFile) => {
-														const fileName = auditFile
-															.split('/')
-															[auditFile.split('/').length - 1].split(
-																'---|---'
-															)[0];
-														const date = auditFile
-															.split('/')
-															[auditFile.split('/').length - 1].split(
-																'---|---'
-															)[1];
-														return (
+												
 															<tr key="key">
 																<td>File Name</td>
 																<td>
@@ -241,9 +230,9 @@ const ClientScreen = ({ location, history, match }) => {
 																		<i className="fas fa-download"></i>
 																	</a>
 																</td>
-															</tr>
-														);
-													})}
+                                
+                                  </tr>
+                                  
 												</tbody>
 											</Table>
 				{/* <!-- /.card-body --> */}
