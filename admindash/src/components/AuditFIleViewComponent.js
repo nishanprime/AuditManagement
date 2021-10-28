@@ -20,6 +20,7 @@ const AuditFIleViewComponent = ({ image, name, date, download }) => {
             class="btn btn-primary"
             target="_blank"
             rel="noreferrer"
+            download
           >
             Download
           </a>
