@@ -4,6 +4,7 @@
 /node_modules
 node_modules/
 frontend/node_modules
+backend/uploads
 /.pnp
 .pnp.js
 

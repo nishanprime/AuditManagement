@@ -23,11 +23,11 @@ const App = () => {
   return (
     <>
       <Router>
-        {userInfo && userInfo.isAdmin ? (
+        {/* {userInfo && userInfo.isAdmin ? (
           <Route path="/" component={LoginScreen} exact />
         ) : (
           <Route path="/" component={website} exact />
-        )}
+        )} */}
 
         {!userInfo ||
           (!userInfo.isAdmin && <Route path="/" component={website} />)}
