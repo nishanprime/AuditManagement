@@ -3,7 +3,7 @@ import { Button } from 'react-bootstrap';
 import { useSelector, useDispath, useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { createAuditorAction, deleteAuditor } from '../../actions/userActions';
-const Table = ({ auditors }) => {
+const AuditorListTable = ({ auditors }) => {
 	const dispatch = useDispatch();
 	const userLogin = useSelector((state) => state.userLogin);
 	const { userInfo } = userLogin;
@@ -24,8 +24,7 @@ const Table = ({ auditors }) => {
 					className="card-header"
 					style={{ justifyContent: 'space-between', display: 'flex' }}
 				>
-					{/* <h2 className="card-title">Auditors</h2> */}
-					<Button className="btn btn-dark">
+					<Button className="btn btn-dark" onClick={createAuditorHandler}>
             Create Auditor
           </Button>
 				</div>
@@ -136,4 +135,4 @@ const Table = ({ auditors }) => {
 	);
 };
 
-export default Table;
+export default AuditorListTable;

@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import Loader from "../components/Loader";
 import { useDispatch, useSelector } from "react-redux";
 import { getClientDetailsAction } from "../actions/clientAction";
-import Table from "../components/dashboard/AuditorListTable";
+import AuditorListTable from "../components/dashboard/AuditorListTable";
 import Breadcrumbs from "../components/dashboard/Breadcrumbs";
 import Message from "../components/Message";
 
@@ -37,7 +37,7 @@ const Auditors = () => {
         ) : error ? (
           <Message variant="danger">{error}</Message>
         ) : (
-          auditors && <Table auditors={auditors} />
+          auditors && <AuditorListTable auditors={auditors} />
         )}
       </div>
     </>

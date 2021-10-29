@@ -92,18 +92,13 @@ const ClientDashboard = ({ history }) => {
                   <Nav.Link href="#auditFiles">My Audit Files</Nav.Link>
 
                   {clientInfo && (
-                    <NavDropdown
-                      title={clientInfo.name}
-                      id="basic-nav-dropdown"
-                    >
-                      {/* Think of something we could add here */}
-                      <NavDropdown.Item href="#action/3.1">
-                        Action
-                      </NavDropdown.Item>
-                      <NavDropdown.Item onClick={logoutHandler}>
-                        Log Out
-                      </NavDropdown.Item>
-                    </NavDropdown>
+                    <>
+                    <Nav.Link href="#Hello">{clientInfo.name}</Nav.Link>
+                    <Nav.Link onClick={logoutHandler}>
+                    <div className="float-left mr-2">Logout</div>
+							<i className="fas fa-sign-out-alt"></i>
+                  </Nav.Link>
+                  </>
                   )}
                 </Nav>
               </Navbar.Collapse>
@@ -114,17 +109,17 @@ const ClientDashboard = ({ history }) => {
             <div class="container d-flex justify-content-center align-items-center">
               <div class="card">
                 <div class="user text-center">
-                  <div class="profile mt-2">
+                  <div class="profile m-3">
                     <Image src={clientInfo.dp} thumbnail fluid width="100" />
                   </div>
                 </div>
-                <div class="text-center px-4 pb-4">
-                  <h4 class="mb-0">{clientInfo.name}</h4>{" "}
+                <div class="text-center px-4 pb-4 m-2">
+                  <h4 class="mb-1">{clientInfo.name}</h4>{" "}
                   <span class="text-muted d-block mb-1">
-                    Client Id: {clientInfo.clientId}
+                    Client ID: {clientInfo.clientId}
                   </span>{" "}
                   <span class="text-muted d-block mb-1">
-                    Registration Number (PAN): {clientInfo.registrationNumber}
+                    Registration Number (PAN/VAT): {clientInfo.registrationNumber}
                   </span>{" "}
                   <span class="text-muted d-block mb-1">
                     Email: {clientInfo.email}

@@ -4,7 +4,7 @@ import { useSelector, useDispath, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import { createClientAction, deleteClient } from "../../actions/clientAction";
 import { CLIENT_SINGLE_DETAILS_RESET } from "../../constants/clientConstants";
-const Table = ({ clients }) => {
+const ClientListTable = ({ clients }) => {
   const dispatch = useDispatch();
   const userLogin = useSelector((state) => state.userLogin);
   const { userInfo } = userLogin;
@@ -130,4 +130,4 @@ const Table = ({ clients }) => {
   );
 };
 
-export default Table;
+export default ClientListTable;

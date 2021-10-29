@@ -60,14 +60,14 @@ const Dashboard = ({ auditors }) => {
                 link="/admin/auditfiles"
               />
               <CardSection
-                header="_"
+                header={auditors.length}
                 boxProperty={"small-box bg-success"}
                 body="Total Auditors"
                 footer="More Info"
                 footerIcon="fas fa-arrow-circle-right"
                 color=""
                 bodyIcon={"ion ion-android-people"}
-                link="/auditors"
+                link="/admin/auditors"
               />
               <CardSection
                 header="_"

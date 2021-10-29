@@ -97,7 +97,7 @@ $(".content-wrapper").on('click', function(event) {
 						role="button"
 					>
 						<i className="nav-icon fas fa-arrow-left" />
-						<p>Toggle Sidebar</p>
+						<p>Hide Sidebar</p>
 					</Link>
 								</li>
 							</ul>
