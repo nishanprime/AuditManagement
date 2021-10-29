@@ -19,11 +19,13 @@ const Dashboard = ({ auditors }) => {
   const clientDetails = useSelector((state) => state.clientDetails);
   const { clients } = clientDetails;
 
-  const totalAudits = clients
-    .map((client) => client.images.length)
-    .reduce((acc, curVal) => {
-      return acc + curVal;
-    }, 0);
+  const totalAudits =
+    clients &&
+    clients
+      .map((client) => client.images.length)
+      .reduce((acc, curVal) => {
+        return acc + curVal;
+      }, 0);
 
   useEffect(() => {
     if (!clients) {

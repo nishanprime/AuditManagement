@@ -6,7 +6,7 @@ import AuditorListTable from "../components/dashboard/AuditorListTable";
 import Breadcrumbs from "../components/dashboard/Breadcrumbs";
 import Message from "../components/Message";
 
-const Auditors = () => {
+const Auditors = ({ history }) => {
   const dispatch = useDispatch();
   const auditorDelete = useSelector((state) => state.auditorDelete);
 
@@ -16,6 +16,9 @@ const Auditors = () => {
     success: auditorDeleteSuccess,
   } = auditorDelete;
 
+  const userLogin = useSelector((state) => state.userLogin);
+  const { userInfo } = userLogin;
+
   const clientDetails = useSelector((state) => state.clientDetails);
   const { clients } = clientDetails;
 
@@ -23,10 +26,13 @@ const Auditors = () => {
   const { loading, error, auditors } = auditorsDetails;
 
   useEffect(() => {
+    if (!userInfo || !userInfo.isAdmin) {
+      history.push("/login");
+    }
     if (!clients) {
       dispatch(getClientDetailsAction());
     }
-  }, [auditorDeleteSuccess, dispatch]);
+  }, [auditorDeleteSuccess, dispatch, history, clients, userInfo]);
 
   return (
     <>
