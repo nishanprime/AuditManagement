@@ -43,6 +43,7 @@ const App = () => {
           <Route path="/admin/clientlist" component={ClientListScreen} exact />
           <Route path="/admin/clients/:id/edit" component={ClientEditScreen} />
           <Route path="/admin/clients/:id/info" component={ClientScreen} />
+          <Route path="/admin/clients/:id/messages" component={ClientScreen} />
           <Route path="/clientdashboard" component={ClientDashboard} />
           <Route path="/master/auditors/:id/info" component={AuditorScreen} />
           <Route path="/admin/auditors" component={Auditors} />

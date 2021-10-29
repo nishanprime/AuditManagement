@@ -20,6 +20,7 @@ const ClientScreen = ({ location, history, match }) => {
   const [createdAt, setCreatedAt] = useState("");
   const [updatedAt, setUpdatedAt] = useState("");
   const [dp, setDp] = useState("");
+  const [messages, setMessages] = useState([]);
   const dispatch = useDispatch();
 
   const currentClientDetails = useSelector(
@@ -50,6 +51,7 @@ const ClientScreen = ({ location, history, match }) => {
       }
     }
   }, [dispatch, history, client, clientMongoId, userInfo]);
+
   return (
     <div className="content-wrapper">
       {loading ? (
@@ -200,7 +202,18 @@ const ClientScreen = ({ location, history, match }) => {
                       {/* <!-- /.card-header --> */}
                       <div className="card-body">
                         {/* <!-- /.card-header --> */}
-				
+                        <h4>{client.messageToAuditor}</h4>
+                        {/* {console.log(messages)} */}
+                           {messages && messages.map((client) => {
+                             return (
+                                <>
+                                  <h4>{client.messageToAuditor}</h4>
+                                </>
+                             )
+                            }
+                           )}
+
+
 				{/* <!-- /.card-body --> */}
                       </div>
                       </div>

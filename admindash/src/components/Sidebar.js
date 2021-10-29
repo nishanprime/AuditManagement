@@ -26,15 +26,9 @@ $(".content-wrapper").on('click', function(event) {
 			<>
 				<aside className="main-sidebar pushmenu sidebar-dark-primary elevation-4" id="control-sidebar">
 					{/* Brand Logo */}
-					<Link to="/dashboard" className="brand-link">
-						<img
-							src="dist/img/AdminLTELogo.png"
-							alt="Master Logo"
-							className="brand-image img-circle elevation-3"
-							style={{ opacity: '.8' }}
-						/>
+					<Link to="/dashboard" className="align-items-center brand-link">
 						<span className="brand-text font-weight-light">
-							Saurya Auditors
+							Audit Company Name
 						</span>
 					</Link>
 					{/* Sidebar */}
