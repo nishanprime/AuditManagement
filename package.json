@@ -12,7 +12,8 @@
     "dashboard": "npm start --prefix admindash",
     "dev:2": "concurrently \"npm run server\" \"npm run dashboard\"",
     "data:import": "node backend/seeder",
-    "data:destroy": "node backend/seeder -d"
+    "data:destroy": "node backend/seeder -d",
+    "heroku-postbuild":"NPM_CONFIG_PRODUCTION=false npm install --prefix admindash && npm run build --prefix admindash"
   },
   "repository": {
     "type": "git",
