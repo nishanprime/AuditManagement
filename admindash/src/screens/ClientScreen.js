@@ -159,115 +159,165 @@ const ClientScreen = ({ location, history, match }) => {
                     </div>
                     {/* <!-- /.card --> */}
 
-                        {/* <!-- About Me Box --> */}
-                        <div className="row">
-                    <div className="card card-primary col-md-4">
-                      <div className="card-header">
-                        <h3 className="card-title">About Client</h3>
-                      </div>
-                      {/* <!-- /.card-header --> */}
-                      <div className="card-body">
-                        <strong>
-                          <i className="fas fa-book mr-1"></i> Address
-                        </strong>
-
-                        <p className="text-muted">{client.address}</p>
-
-                        <hr />
-
-                        <strong>
-                          <i className="fas fa-map-marker-alt mr-1"></i>{" "}
-                          Location
-                        </strong>
-
-                        <p className="text-muted">Nepal</p>
-
-                        <hr />
-
-                        <strong>
-                          <i className="far fa-file-alt mr-1"></i> Notes
-                        </strong>
-
-                        <p className="text-muted">
-                          Lorem ipsum dolor sit amet, consectetur adipiscing
-                          elit. Etiam fermentum enim neque.
-                        </p>
-                      </div>
-                      {/* <!-- /.card-body --> */}
+                    {/* <!-- About Me Box --> */}
+                    <div className="row">
+                      <div className="card card-primary col-md-4">
+                        <div className="card-header">
+                          <h3 className="card-title">About Client</h3>
                         </div>
-                        <div className="card card-primary col-md-8 ml-6">
-                      <div className="card-header">
-                        <h3 className="card-title">Messages</h3>
-                      </div>
-                      {/* <!-- /.card-header --> */}
-                      <div className="card-body">
                         {/* <!-- /.card-header --> */}
-                        <h4>{client.messageToAuditor}</h4>
-                        {/* {console.log(messages)} */}
-                           {messages && messages.map((client) => {
-                             return (
+                        <div className="card-body">
+                          <strong>
+                            <i className="fas fa-book mr-1"></i> Address
+                          </strong>
+
+                          <p className="text-muted">{client.address}</p>
+
+                          <hr />
+
+                          <strong>
+                            <i className="fas fa-map-marker-alt mr-1"></i>{" "}
+                            Location
+                          </strong>
+
+                          <p className="text-muted">Nepal</p>
+
+                          <hr />
+
+                          <strong>
+                            <i className="far fa-file-alt mr-1"></i> Notes
+                          </strong>
+
+                          <p className="text-muted">
+                            Lorem ipsum dolor sit amet, consectetur adipiscing
+                            elit. Etiam fermentum enim neque.
+                          </p>
+                        </div>
+                        {/* <!-- /.card-body --> */}
+                      </div>
+                      <div className="card card-primary col-md-8 ml-6">
+                        <div className="card-header">
+                          <h3 className="card-title">Messages</h3>
+                        </div>
+                        {/* <!-- /.card-header --> */}
+                        <div className="card-body">
+                          {/* <!-- /.card-header --> */}
+                          {/* {client.messageToAuditor
+                            .slice(0)
+                            .reverse()
+                            .map((msg) => {
+                              const msgData=msg.split("---_---")[0]
+                              const msgDate=msg.split("---_---")[1]
+                              return <h4>{msgData}</h4>;
+                            })} */}
+
+                          <div style={{ "overflow-x": "auto" }}>
+                            <table
+                              id="mesesage"
+                              className="table table-bordered table-striped"
+                            >
+                              <thead>
+                                <tr>
+                                  <th>Message</th>
+                                  <th>Date Sent</th>
+                                </tr>
+                              </thead>
+
+                              <tbody>
+                                {client &&
+                                  client.messageToAuditor &&
+                                  client.messageToAuditor.slice(0).reverse()
+                                    .map((msg) => {
+                                      const msgData = msg.split("---_---")[0];
+                                      const msgDate = msg.split("---_---")[1];
+                                      var options = {
+                                        weekday: "long",
+                                        year: "numeric",
+                                        month: "long",
+                                        day: "numeric",
+                                      };
+                                      const date = new Date(
+                                        parseInt(msgDate)
+                                      ).toLocaleDateString("en-GB", options);
+                                      const time = new Date(
+                                        parseInt(msgDate)
+                                      ).toLocaleTimeString("en-GB", {
+                                        hourCycle: "h12",
+                                      });
+                                      return (
+                                        <tr>
+                                          <td>{msgData}</td>
+                                          <td>{`${date} at ${time}`}</td>
+                                        </tr>
+                                      );
+                                    })}
+                                {/* {auditors.map(auditor)=> return(
+              {
+               
+  }
+            )} */}
+                              </tbody>
+                            </table>
+                          </div>
+
+                          {/* {console.log(messages)} */}
+                          {messages &&
+                            messages.map((client) => {
+                              return (
                                 <>
                                   <h4>{client.messageToAuditor}</h4>
                                 </>
-                             )
-                            }
-                           )}
+                              );
+                            })}
 
-
-				{/* <!-- /.card-body --> */}
-                      </div>
+                          {/* <!-- /.card-body --> */}
+                        </div>
                       </div>
                       {/* <!-- /.card-body --> */}
                     </div>
-                        {/* <!-- /.card --> */}
-                        
+                    {/* <!-- /.card --> */}
 
-                        {/* Messages */}
-                        <div className="card card-primary col-md-12">
+                    {/* Messages */}
+                    <div className="card card-primary col-md-12">
                       <div className="card-header">
                         <h3 className="card-title">Audit Reports</h3>
                       </div>
                       {/* <!-- /.card-header --> */}
                       <div className="card-body">
                         <Table
-												striped
-												bordered
-												hover
-												responsive
-												className="table-sm"
-											>
-												<thead>
-													<tr>
-														<th>File Name</th>
-														<th>Uploaded Data</th>
-														<th>Download</th>
-													</tr>
-												</thead>
-												<tbody>
-												
-															<tr key="key">
-																<td>File Name</td>
-																<td>
-																	a
-																</td>
-																<td>
-																	<a
-																		href="#filepath"
-																		target="_blank"
-																		rel="noreferrer"
-																	>
-																		<i className="fas fa-download"></i>
-																	</a>
-																</td>
-                                
-                                  </tr>
-                                  
-												</tbody>
-											</Table>
+                          striped
+                          bordered
+                          hover
+                          responsive
+                          className="table-sm"
+                        >
+                          <thead>
+                            <tr>
+                              <th>File Name</th>
+                              <th>Uploaded Data</th>
+                              <th>Download</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr key="key">
+                              <td>File Name</td>
+                              <td>a</td>
+                              <td>
+                                <a
+                                  href="#filepath"
+                                  target="_blank"
+                                  rel="noreferrer"
+                                >
+                                  <i className="fas fa-download"></i>
+                                </a>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </Table>
                       </div>
                       {/* <!-- /.card-body --> */}
-                        </div>
-                        {/* End Messages */}
+                    </div>
+                    {/* End Messages */}
                   </div>
                 </div>
                 {/* <!-- /.row --> */}
